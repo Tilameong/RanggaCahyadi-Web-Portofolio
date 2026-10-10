@@ -62,6 +62,8 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
             alignItems: "center",
             gap: "10px",
             textDecoration: "none",
+            minWidth: 0,
+            overflow: "hidden",
           }}
         >
           <div
@@ -73,26 +75,33 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              flexShrink: 0,
             }}
           >
             <Layers size={20} color="#ffffff" />
           </div>
-          <div>
+          <div style={{ minWidth: 0, overflow: "hidden" }}>
             <div
               style={{
-                fontSize: "1.1rem",
+                fontSize: "1.05rem",
                 fontWeight: 700,
                 color: "#ffffff",
                 letterSpacing: "-0.01em",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
             >
               Rangga Cahyadi
             </div>
             <div
               style={{
-                fontSize: "0.72rem",
+                fontSize: "0.7rem",
                 color: "var(--indigo-light)",
                 fontFamily: "var(--font-mono)",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
             >
               IT SUPPORT &bull; ADMIN IT &bull; UI/UX
@@ -132,7 +141,7 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
         </nav>
 
         {/* Action Controls (IN | EN + Unduh CV + Mobile Burger) */}
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px", flexShrink: 0 }}>
           {/* Header Language Switcher IN | EN */}
           <div className="header-lang-switcher" title="Pilih Bahasa / Choose Language">
             <button

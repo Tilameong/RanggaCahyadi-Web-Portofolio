@@ -118,16 +118,17 @@ export default function ContactSection({
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             {/* Email */}
             <div
-              className="glass-card"
+              className="glass-card contact-info-card"
               style={{
                 padding: "20px 24px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
                 gap: "12px",
+                flexWrap: "wrap",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "14px", minWidth: 0 }}>
                 <div
                   style={{
                     width: "42px",
@@ -137,43 +138,53 @@ export default function ContactSection({
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    flexShrink: 0,
                   }}
                 >
                   <Mail size={20} color="var(--indigo-light)" />
                 </div>
-                <div>
+                <div style={{ minWidth: 0, overflow: "hidden" }}>
                   <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>EMAIL</div>
                   <a
                     href={`mailto:${email}`}
-                    style={{ fontSize: "0.98rem", fontWeight: 700, color: "#ffffff", textDecoration: "none" }}
+                    style={{
+                      fontSize: "0.98rem",
+                      fontWeight: 700,
+                      color: "#ffffff",
+                      textDecoration: "none",
+                      wordBreak: "break-all",
+                    }}
                   >
                     {email}
                   </a>
                 </div>
               </div>
 
-              <button
-                onClick={handleCopyEmail}
-                className="btn-ghost"
-                style={{ padding: "7px 10px" }}
-                title="Salin email"
-              >
-                {copiedEmail ? <Check size={16} color="#34d399" /> : <Copy size={16} />}
-              </button>
+              <div className="contact-actions" style={{ display: "flex", gap: "6px" }}>
+                <button
+                  onClick={handleCopyEmail}
+                  className="btn-ghost"
+                  style={{ padding: "7px 10px" }}
+                  title="Salin email"
+                >
+                  {copiedEmail ? <Check size={16} color="#34d399" /> : <Copy size={16} />}
+                </button>
+              </div>
             </div>
 
             {/* WhatsApp */}
             <div
-              className="glass-card"
+              className="glass-card contact-info-card"
               style={{
                 padding: "20px 24px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
                 gap: "12px",
+                flexWrap: "wrap",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "14px", minWidth: 0 }}>
                 <div
                   style={{
                     width: "42px",
@@ -183,11 +194,12 @@ export default function ContactSection({
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    flexShrink: 0,
                   }}
                 >
                   <Phone size={20} color="var(--orange-light)" />
                 </div>
-                <div>
+                <div style={{ minWidth: 0 }}>
                   <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>WHATSAPP / TELEPON</div>
                   <a
                     href="https://wa.me/6281539235487"
@@ -200,7 +212,7 @@ export default function ContactSection({
                 </div>
               </div>
 
-              <div style={{ display: "flex", gap: "6px" }}>
+              <div className="contact-actions" style={{ display: "flex", gap: "6px" }}>
                 <button
                   onClick={handleCopyPhone}
                   className="btn-ghost"
@@ -266,7 +278,10 @@ export default function ContactSection({
                 {lang === "in" ? "PROFIL & REPOSITORI PENGEMBANG" : "DEVELOPER PROFILES & REPOSITORIES"}
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+              <div
+                className="contact-profiles-grid"
+                style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}
+              >
                 <a
                   href="https://github.com/Tilameong"
                   target="_blank"
@@ -457,6 +472,20 @@ export default function ContactSection({
       <style jsx>{`
         @media (max-width: 900px) {
           .contact-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 520px) {
+          .contact-info-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+          }
+          .contact-actions {
+            width: 100% !important;
+            justify-content: flex-end !important;
+          }
+          .contact-profiles-grid {
             grid-template-columns: 1fr !important;
           }
         }

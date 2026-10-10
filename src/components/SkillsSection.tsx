@@ -243,9 +243,10 @@ export default function SkillsSection() {
                     alignItems: "flex-start",
                     justifyContent: "space-between",
                     gap: "12px",
+                    flexWrap: "wrap",
                   }}
                 >
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", minWidth: 0, flex: "1 1 200px" }}>
                     <div style={{ marginTop: "2px" }}>{hs.icon}</div>
                     <div>
                       <div style={{ fontWeight: 600, color: "#f8fafc", fontSize: "0.92rem" }}>
@@ -396,6 +397,7 @@ export default function SkillsSection() {
                       alignItems: "center",
                       justifyContent: "space-between",
                       gap: "10px",
+                      flexWrap: "wrap",
                     }}
                   >
                     <div>

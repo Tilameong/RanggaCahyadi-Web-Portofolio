@@ -105,6 +105,7 @@ export default function HeroSection({
 
             {/* Direct External Profiles */}
             <div
+              className="hero-profiles-group"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -371,7 +372,7 @@ export default function HeroSection({
           }
 
           .hero-photo-card {
-            max-width: 280px;
+            max-width: min(280px, 85vw);
             margin: 0 auto;
           }
 
@@ -388,6 +389,7 @@ export default function HeroSection({
             margin: 0 auto 10px;
             text-align: center;
             justify-content: center;
+            max-width: 100%;
           }
 
           .hero-title {
@@ -430,6 +432,13 @@ export default function HeroSection({
           .hero-btn-group a {
             width: 100%;
             justify-content: center;
+          }
+
+          .hero-profiles-group {
+            justify-content: center;
+            width: 100%;
+            max-width: 320px;
+            margin: 14px auto 0;
           }
         }
       `}</style>

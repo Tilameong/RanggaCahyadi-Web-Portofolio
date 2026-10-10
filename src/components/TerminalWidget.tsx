@@ -192,8 +192,8 @@ export default function TerminalWidget() {
         ))}
 
         {/* Active Input Line */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <span style={{ color: "var(--orange-500)" }}>rangga@it-admin:~$</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+          <span style={{ color: "var(--orange-500)", flexShrink: 0 }}>rangga@it-admin:~$</span>
           <input
             type="text"
             value={inputVal}
@@ -207,7 +207,8 @@ export default function TerminalWidget() {
               color: "#34d399",
               fontFamily: "var(--font-mono)",
               fontSize: "0.85rem",
-              flex: 1,
+              flex: "1 1 180px",
+              minWidth: "120px",
             }}
           />
         </div>

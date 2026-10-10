@@ -502,18 +502,21 @@ export default function ExperienceSection() {
         @media (max-width: 768px) {
           .field-grid {
             grid-template-columns: 1fr !important;
-            gap: 18px;
-            max-width: 320px;
+            gap: 20px;
+            width: 100%;
+            max-width: 440px;
             margin: 0 auto;
           }
 
           .field-img-wrap {
             aspect-ratio: 10 / 16;
+            width: 100%;
           }
 
           .field-pill {
             font-size: 0.72rem;
             padding: 4px 10px;
+            max-width: calc(100% - 20px);
           }
         }
       `}</style>
