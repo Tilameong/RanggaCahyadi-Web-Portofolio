@@ -9,16 +9,10 @@ import {
   Camera,
   Maximize2,
   X,
-  CheckCircle2,
 } from "lucide-react";
 
 export default function ExperienceSection() {
-  const [selectedPhoto, setSelectedPhoto] = useState<{
-    title: string;
-    category: string;
-    image: string;
-    description: string;
-  } | null>(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
   const experiences = [
     {
@@ -71,22 +65,16 @@ export default function ExperienceSection() {
     },
   ];
 
-  const fieldProjects = [
+  const fieldPhotos = [
     {
-      title: "Troubleshooting & Perbaikan Printer Epson",
-      category: "Hardware & Peripheral Support",
-      description:
-        "Dokumentasi penanganan kendala teknis perangkat printer di ruang kerja operasional: pemeriksaan penarik kertas, instalasi driver, penanganan tinta, dan uji fungsi cetak.",
-      image: "/assets/Project/Memperbaiki Printer Epson di Ruang Kerja.png",
-      tag: "Printer & Hardware Support",
+      src: "/assets/Project/Memperbaiki Printer Epson di Ruang Kerja.png",
+      alt: "Dokumentasi IT Technician - Troubleshooting Printer Epson",
+      badge: "Troubleshooting Printer Epson",
     },
     {
-      title: "Maintenance Jaringan di Ruang Server",
-      category: "Network Infrastructure Support",
-      description:
-        "Dokumentasi pemeriksaan konektivitas di ruang server: penataan kabel LAN (UTP), pemantauan koneksi rack switch/router, dan verifikasi kestabilan jaringan lokal.",
-      image: "/assets/Project/Teknisi Jaringan di Ruang Server.png",
-      tag: "Ruang Server & LAN",
+      src: "/assets/Project/Teknisi Jaringan di Ruang Server.png",
+      alt: "Dokumentasi IT Technician - Maintenance Jaringan di Ruang Server",
+      badge: "Teknisi Jaringan & Ruang Server",
     },
   ];
 
@@ -272,7 +260,7 @@ export default function ExperienceSection() {
           ))}
         </div>
 
-        {/* Real Fieldwork Documentation Showcase (Dokumentasi Lapangan Teknisi IT) */}
+        {/* Real Fieldwork Documentation Showcase (Clean Tanpa Caption, Tidak Terpotong) */}
         <div style={{ marginTop: "44px" }}>
           <div
             style={{
@@ -307,10 +295,10 @@ export default function ExperienceSection() {
                     letterSpacing: "-0.01em",
                   }}
                 >
-                  Dokumentasi Praktik &amp; Troubleshooting Lapangan
+                  Dokumentasi Lapangan Teknisi IT
                 </h3>
                 <div style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-                  Bukti visual penanganan perangkat keras &amp; infrastruktur jaringan di lapangan
+                  Bukti visual penanganan printer &amp; jaringan server (klik untuk memperbesar)
                 </div>
               </div>
             </div>
@@ -327,42 +315,38 @@ export default function ExperienceSection() {
                 fontWeight: 600,
               }}
             >
-              Hands-on Technical Support
+              Hands-on Fieldwork
             </span>
           </div>
 
-          {/* Photo Cards Grid */}
+          {/* Photo Cards Grid: Tanpa Caption, Rasio Utuh Tanpa Kepotong */}
           <div className="field-grid">
-            {fieldProjects.map((item, idx) => (
+            {fieldPhotos.map((photo, idx) => (
               <div
                 key={idx}
                 className="field-card"
-                onClick={() => setSelectedPhoto(item)}
+                onClick={() => setSelectedPhoto(photo.src)}
+                title="Klik untuk melihat foto penuh"
               >
                 <div className="field-img-wrap">
                   <Image
-                    src={item.image}
-                    alt={item.title}
+                    src={photo.src}
+                    alt={photo.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, 550px"
+                    sizes="(max-width: 768px) 100vw, 450px"
                     style={{
-                      objectFit: "cover",
+                      objectFit: "contain",
                       objectPosition: "center",
                     }}
+                    priority={false}
                   />
                   <div className="field-overlay">
                     <span className="field-zoom-badge">
-                      <Maximize2 size={14} />
-                      Lihat Foto Penuh
+                      <Maximize2 size={15} />
+                      <span>Lihat Foto Penuh</span>
                     </span>
                   </div>
-                  <span className="field-pill">{item.tag}</span>
-                </div>
-
-                <div className="field-body">
-                  <div className="field-cat">{item.category}</div>
-                  <h4 className="field-title">{item.title}</h4>
-                  <p className="field-desc">{item.description}</p>
+                  <span className="field-pill">{photo.badge}</span>
                 </div>
               </div>
             ))}
@@ -370,7 +354,7 @@ export default function ExperienceSection() {
         </div>
       </div>
 
-      {/* Modal Lightbox Preview Foto Dokumentasi */}
+      {/* Modal Lightbox Preview Foto Dokumentasi Tanpa Caption (100% Utuh) */}
       {selectedPhoto && (
         <div
           className="modal-overlay"
@@ -381,16 +365,19 @@ export default function ExperienceSection() {
             className="modal-content"
             onClick={(e) => e.stopPropagation()}
             style={{
-              maxWidth: "750px",
+              maxWidth: "600px",
+              width: "92vw",
               padding: "0",
               overflow: "hidden",
               border: "1px solid var(--border-hover)",
+              background: "#030712",
+              borderRadius: "14px",
             }}
           >
-            {/* Modal Header */}
+            {/* Modal Top Bar */}
             <div
               style={{
-                padding: "16px 20px",
+                padding: "12px 18px",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -398,20 +385,15 @@ export default function ExperienceSection() {
                 background: "#090d16",
               }}
             >
-              <div>
-                <span
-                  style={{
-                    fontSize: "0.75rem",
-                    color: "var(--indigo-light)",
-                    fontFamily: "var(--font-mono)",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {selectedPhoto.category}
-                </span>
-                <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#fff", marginTop: "2px" }}>
-                  {selectedPhoto.title}
-                </h3>
+              <div
+                style={{
+                  fontSize: "0.85rem",
+                  fontWeight: 600,
+                  color: "#ffffff",
+                  fontFamily: "var(--font-mono)",
+                }}
+              >
+                Dokumentasi Lapangan Teknisi IT
               </div>
               <button
                 onClick={() => setSelectedPhoto(null)}
@@ -422,43 +404,34 @@ export default function ExperienceSection() {
                   padding: "6px",
                   borderRadius: "6px",
                   cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <X size={20} />
               </button>
             </div>
 
-            {/* Modal Image */}
+            {/* Modal Image Display (contain, utuh 100%) */}
             <div
               style={{
                 position: "relative",
                 width: "100%",
-                height: "420px",
+                height: "75vh",
+                maxHeight: "720px",
                 background: "#030712",
               }}
             >
               <Image
-                src={selectedPhoto.image}
-                alt={selectedPhoto.title}
+                src={selectedPhoto}
+                alt="Dokumentasi Lapangan Penuh"
                 fill
-                sizes="800px"
+                sizes="(max-width: 768px) 95vw, 600px"
                 style={{
                   objectFit: "contain",
                 }}
               />
-            </div>
-
-            {/* Modal Caption */}
-            <div
-              style={{
-                padding: "16px 20px",
-                background: "#090d16",
-                borderTop: "1px solid var(--border-subtle)",
-              }}
-            >
-              <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.55 }}>
-                {selectedPhoto.description}
-              </p>
             </div>
           </div>
         </div>
@@ -468,38 +441,41 @@ export default function ExperienceSection() {
         .field-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
+          gap: 24px;
+          width: 100%;
         }
 
         .field-card {
           border-radius: 14px;
-          border: 1px solid var(--border-subtle);
-          background: rgba(15, 23, 42, 0.7);
+          border: 1px solid var(--border-card);
+          background: rgba(13, 20, 36, 0.85);
           overflow: hidden;
           cursor: pointer;
           transition: all 0.25s ease;
           display: flex;
-          flex-direction: column;
+          padding: 8px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         .field-card:hover {
-          border-color: var(--indigo-primary);
-          transform: translateY(-3px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+          border-color: var(--indigo-light);
+          transform: translateY(-4px);
+          box-shadow: 0 15px 35px rgba(99, 102, 241, 0.2);
         }
 
         .field-img-wrap {
           position: relative;
           width: 100%;
-          aspect-ratio: 16 / 10;
-          background: #0d1322;
+          aspect-ratio: 10 / 16;
+          background: #080d1a;
+          border-radius: 10px;
           overflow: hidden;
         }
 
         .field-overlay {
           position: absolute;
           inset: 0;
-          background: rgba(9, 13, 22, 0.4);
+          background: rgba(9, 13, 22, 0.35);
           opacity: 0;
           transition: opacity 0.2s ease;
           display: flex;
@@ -515,81 +491,40 @@ export default function ExperienceSection() {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          padding: 6px 12px;
+          padding: 8px 16px;
           border-radius: 20px;
-          background: rgba(99, 102, 241, 0.9);
+          background: rgba(99, 102, 241, 0.95);
           color: #ffffff;
-          font-size: 0.8rem;
+          font-size: 0.82rem;
           font-weight: 600;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .field-pill {
           position: absolute;
-          bottom: 10px;
-          left: 10px;
-          background: rgba(9, 13, 22, 0.85);
+          bottom: 12px;
+          left: 12px;
+          background: rgba(9, 13, 22, 0.88);
           backdrop-filter: blur(8px);
-          color: var(--indigo-light);
-          border: 1px solid rgba(99, 102, 241, 0.3);
-          padding: 3px 8px;
-          border-radius: 5px;
-          font-size: 0.72rem;
+          color: #f1f5f9;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          padding: 4px 10px;
+          border-radius: 6px;
+          font-size: 0.74rem;
           font-family: var(--font-mono);
           font-weight: 600;
-        }
-
-        .field-body {
-          padding: 18px 20px;
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-        }
-
-        .field-cat {
-          font-size: 0.75rem;
-          font-family: var(--font-mono);
-          color: var(--orange-light);
-          margin-bottom: 4px;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-        }
-
-        .field-title {
-          font-size: 1.05rem;
-          font-weight: 700;
-          color: #ffffff;
-          margin-bottom: 8px;
-          line-height: 1.35;
-        }
-
-        .field-desc {
-          font-size: 0.86rem;
-          color: var(--text-secondary);
-          line-height: 1.55;
-          margin: 0;
         }
 
         @media (max-width: 768px) {
           .field-grid {
             grid-template-columns: 1fr !important;
-            gap: 16px;
+            gap: 18px;
+            max-width: 320px;
+            margin: 0 auto;
           }
 
           .field-img-wrap {
-            aspect-ratio: 16 / 10;
-          }
-
-          .field-body {
-            padding: 16px;
-          }
-
-          .field-title {
-            font-size: 1rem;
-          }
-
-          .field-desc {
-            font-size: 0.84rem;
+            aspect-ratio: 10 / 16;
           }
         }
       `}</style>

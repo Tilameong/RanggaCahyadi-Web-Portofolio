@@ -157,16 +157,7 @@ export default function HeroSection({
                 />
               </div>
 
-              {/* Clean Caption Under Photo */}
-              <div className="photo-caption">
-                <span className="photo-name">
-                  Rangga Cahyadi
-                </span>
-                <span className="photo-badge">
-                  Profil Profesional
-                </span>
               </div>
-            </div>
           </div>
         </div>
       </div>
@@ -228,39 +219,7 @@ export default function HeroSection({
           background-color: #0d1322;
         }
 
-        .photo-caption {
-          margin-top: 10px;
-          padding: 8px 12px;
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid var(--border-subtle);
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 10px;
-          box-sizing: border-box;
-          width: 100%;
-        }
-
-        .photo-name {
-          font-size: 0.92rem;
-          font-weight: 700;
-          color: #ffffff;
-          white-space: nowrap;
-        }
-
-        .photo-badge {
-          font-size: 0.72rem;
-          font-family: var(--font-mono);
-          padding: 3px 8px;
-          border-radius: 5px;
-          background: rgba(99, 102, 241, 0.15);
-          color: var(--indigo-light);
-          border: 1px solid rgba(99, 102, 241, 0.3);
-          font-weight: 600;
-          white-space: nowrap;
-          flex-shrink: 0;
-        }
+        
 
         .hero-status-badge {
           display: inline-flex;
