@@ -12,6 +12,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ToastNotification from "@/components/ToastNotification";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -43,6 +44,9 @@ export default function Home() {
 
   return (
     <main style={{ minHeight: "100vh", position: "relative" }}>
+      {/* Animated Tech Preloader */}
+      <LoadingScreen />
+
       {/* Cyber ambient background overlay */}
       <div className="cyber-bg-overlay" />
 
