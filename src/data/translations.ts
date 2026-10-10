@@ -18,6 +18,7 @@ export const translations = {
       pillars: [
         "Troubleshooting Hardware, Printer & CCTV",
         "Jaringan LAN & Cisco CCNA Certified",
+        "Frontend React.js (HackerRank Certified)",
         "Excel PivotTable, HLOOKUP & Arsip IT",
         "UI/UX Designer (Figma Prototyping)",
       ],
@@ -200,6 +201,7 @@ export const translations = {
       pillars: [
         "Hardware, Printer & CCTV Troubleshooting",
         "LAN Networking & Cisco CCNA Certified",
+        "Frontend React.js (HackerRank Certified)",
         "Excel PivotTable, HLOOKUP & IT Archiving",
         "UI/UX Designer (Figma Prototyping)",
       ],

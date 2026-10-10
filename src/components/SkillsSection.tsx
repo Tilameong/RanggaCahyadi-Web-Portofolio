@@ -53,8 +53,20 @@ export default function SkillsSection() {
       icon: <CheckCircle size={18} color="var(--orange-light)" />,
     },
     {
+      name: "React.js & Frontend Web Development",
+      desc:
+        lang === "in"
+          ? "Pengembangan antarmuka web interaktif modern dengan React.js, arsitektur komponen modular, hooks, dan integrasi API (HackerRank Certified)."
+          : "Modern interactive web UI development using React.js, modular component architecture, hooks, and API integration (HackerRank Certified).",
+      tag: "React / Frontend",
+      icon: <Code2 size={18} color="#00ea64" />,
+    },
+    {
       name: "HTML, CSS, JavaScript, SQL, C#",
-      desc: "Dasar pemrograman web, query basis data terstruktur, dan logika C#.",
+      desc:
+        lang === "in"
+          ? "Dasar pemrograman web, query basis data terstruktur, dan logika C#."
+          : "Web programming fundamentals, relational database queries, and C# programming.",
       tag: "Programming",
       icon: <Code2 size={18} color="#38bdf8" />,
     },
@@ -213,7 +225,7 @@ export default function SkillsSection() {
                   color: "var(--orange-light)",
                 }}
               >
-                {lang === "in" ? "9 Kompetensi" : "9 Competencies"}
+                {lang === "in" ? `${hardSkills.length} Kompetensi` : `${hardSkills.length} Competencies`}
               </span>
             </div>
 

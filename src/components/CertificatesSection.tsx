@@ -78,6 +78,19 @@ export default function CertificatesSection() {
       accent: "var(--indigo-primary)",
     },
     {
+      id: "hackerrank-react",
+      title: "Frontend Developer (React) Certificate",
+      issuer: "HackerRank",
+      category: lang === "in" ? "Pengembangan Web Frontend" : "Frontend Web Development",
+      badge: "HackerRank Certified",
+      description:
+        lang === "in"
+          ? "Sertifikasi resmi HackerRank dalam pengembangan aplikasi web modern dengan React.js: state management, komponen modular, hooks, routing, dan integrasi API antarmuka responsif."
+          : "Official HackerRank credential verifying competencies in modern React.js web development: state management, modular components, hooks, routing, and responsive UI API integration.",
+      fileUrl: "/assets/Certificated/Frontend_Developer_React Certificate.pdf",
+      accent: "#00ea64",
+    },
+    {
       id: "oracle-db",
       title: "Oracle Academy Course Certificate",
       issuer: "Oracle Academy",
