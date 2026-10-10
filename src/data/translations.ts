@@ -1,0 +1,366 @@
+export const translations = {
+  in: {
+    nav: {
+      about: "Tentang",
+      education: "Pendidikan",
+      experience: "Pengalaman",
+      certificates: "Sertifikat",
+      skills: "Keahlian",
+      projects: "Proyek",
+      contact: "Kontak",
+      downloadCv: "Unduh CV",
+    },
+    hero: {
+      statusBadge: "Siap Bekerja • IT Support & IT Administration",
+      name: "Rangga Cahyadi",
+      headline: "IT Technical Support • IT Administrator • UI/UX",
+      bio: "Lulusan D3 Manajemen Informatika dengan keahlian terapan di bidang IT Technical Support, administrasi sistem, dan infrastruktur jaringan. Berpengalaman menangani troubleshooting perangkat keras dan lunak (PC, Printer Epson, CCTV PoE), instalasi sistem operasi, serta pengolahan data terstruktur menggunakan Microsoft Excel (PivotTable & HLOOKUP). Memiliki sertifikasi resmi Cisco Networking Academy di bidang networking & cybersecurity, berorientasi pada penyelesaian kendala teknis yang cepat, rapi, dan terukur.",
+      pillars: [
+        "Troubleshooting Hardware, Printer & CCTV",
+        "Jaringan LAN & Cisco CCNA Certified",
+        "Excel PivotTable, HLOOKUP & Arsip IT",
+        "UI/UX Designer (Figma Prototyping)",
+      ],
+      btnDownload: "Unduh CV Resmi (.pdf)",
+      btnContact: "Hubungi Saya",
+      btnExplore: "Lihat Pengalaman & Proyek",
+    },
+    about: {
+      tag: "// PENDIDIKAN & KOMPETENSI",
+      title: "Latar Belakang Pendidikan & Almamater",
+      period: "2021 – 2024",
+      institution: "Politeknik Negeri Lampung",
+      location: "Bandar Lampung",
+      majorLabel: "Program Studi:",
+      major: "D3 Manajemen Informatika",
+      status: "Status: Lulus",
+      curriculum:
+        "Kurikulum terapan mencakup pemeliharaan hardware & software, perancangan jaringan komputer (LAN/VLAN), basis data terstruktur, sistem informasi manajemen, serta perancangan antarmuka digital UI/UX.",
+      careerFocusTitle: "🎯 Fokus Minat Karier:",
+      careerFocusDesc:
+        "Berminat mengembangkan karier di bidang IT Support, Technical Support, dan IT Administration, dengan keunggulan tambahan di bidang Cisco Networking dan UI/UX Design.",
+    },
+    terminal: {
+      header: "rangga@tech-terminal: ~ (bash)",
+      greeting: "Sistem Terhubung. Ketik 'help' untuk daftar perintah.",
+      commands: {
+        help: "Daftar perintah yang tersedia: profile, skills, contact, clear",
+      },
+    },
+    experience: {
+      tag: "// PENGALAMAN KERJA",
+      title: "Pengalaman Kerja Profesional",
+      subtitle:
+        "Riwayat kontribusi teknis di bidang administrasi IT, dukungan teknis lapangan, dan perancangan UI/UX.",
+      activeBadge: "Posisi Aktif",
+      internBadge: "Magang",
+      fieldShowcaseTitle: "Dokumentasi Lapangan Teknisi IT",
+      fieldShowcaseSubtitle:
+        "Bukti visual penanganan hardware & jaringan server (klik untuk melihat detail)",
+      fieldBadge: "Hands-on Fieldwork",
+      photo1: {
+        badge: "Troubleshooting & Perbaikan Hardware",
+        caption:
+          "Troubleshooting perangkat komputer, perbaikan hardware printer, pemeriksaan catridge/mekanik, serta pengujian kelayakan operasional.",
+      },
+      photo2: {
+        badge: "Maintenance Jaringan Server & CCTV PoE",
+        caption:
+          "Dokumentasi pemeriksaan konektivitas di ruang server: penataan kabel LAN (UTP), pemantauan koneksi rack switch/router, dan verifikasi kestabilan jaringan lokal. Maintenance jaringan server dan CCTV PoE.",
+      },
+      items: [
+        {
+          company: "SPPG Kebon Kangkung",
+          location: "Bandung",
+          role: "Admin IT",
+          period: "Juli 2026 – Sekarang",
+          isCurrent: true,
+          bullets: [
+            "Mengelola pengolahan data dan penyusunan laporan menggunakan Microsoft Excel, termasuk PivotTable dan HLOOKUP.",
+            "Melakukan troubleshooting dasar pada perangkat PC, printer, dan CCTV untuk mengidentifikasi serta menangani kendala operasional.",
+            "Mendukung penggunaan aplikasi perkantoran serta menangani kendala dasar pada perangkat lunak sesuai kebutuhan.",
+            "Mengelola dan mengarsipkan data serta dokumen digital untuk mendukung kelancaran operasional.",
+            "Menyiapkan data dan dokumentasi untuk kebutuhan rapat mingguan (weekly meeting).",
+            "Membuat dan mengedit pamflet serta materi publikasi kegiatan menggunakan Canva.",
+          ],
+          skills: [
+            "Microsoft Excel",
+            "PivotTable & HLOOKUP",
+            "PC, Printer & CCTV",
+            "Dokumen Digital",
+            "Canva",
+          ],
+        },
+        {
+          company: "CV. Cahaya Mandiri Gemilang",
+          location: "Jakarta Barat",
+          role: "IT Technical Support",
+          period: "Agustus 2024 – Juli 2026",
+          isCurrent: false,
+          bullets: [
+            "Melakukan troubleshooting dan penanganan gangguan pada perangkat komputer (PC), printer, CCTV, hardware, dan software.",
+            "Melakukan pemeriksaan perangkat, instalasi driver, serta pengecekan fungsi perangkat untuk memastikan operasional berjalan dengan baik.",
+            "Melakukan troubleshooting jaringan dasar, termasuk pemeriksaan koneksi LAN dan konektivitas perangkat.",
+            "Melaksanakan pengecekan unit secara langsung di lapangan serta menangani kendala teknis sesuai kebutuhan operasional.",
+          ],
+          skills: [
+            "Troubleshooting PC/Hardware",
+            "Driver & Software",
+            "Jaringan Dasar LAN",
+            "Pemeriksaan Lapangan",
+          ],
+        },
+        {
+          company: "Yayasan Edukasi Wakaf Indonesia",
+          location: "Yogyakarta",
+          role: "UI/UX DESIGNER",
+          status: "Magang",
+          period: "Februari 2024 – Juni 2024",
+          isCurrent: false,
+          bullets: [
+            "Merancang tampilan antarmuka website menggunakan Figma sesuai kebutuhan proyek.",
+            "Membuat wireframe dan prototype sebagai acuan pengembangan antarmuka website.",
+            "Menyusun alur navigasi untuk mempermudah pengguna mengakses fitur website.",
+            "Melakukan revisi desain berdasarkan evaluasi dan masukan dari tim.",
+          ],
+          skills: [
+            "Figma",
+            "Wireframe",
+            "Prototype",
+            "Alur Navigasi Website",
+            "Evaluasi Desain",
+          ],
+        },
+      ],
+    },
+    certificates: {
+      tag: "// SERTIFIKASI RESMI",
+      title: "Lisensi & Sertifikasi Kompetensi",
+      subtitle:
+        "Kredensial resmi dari Cisco Networking Academy dan Dicoding Indonesia untuk standardisasi profesional.",
+      viewPdf: "Lihat Dokumen PDF",
+      verify: "Verifikasi Kredensial",
+      modalTitle: "Pratinjau Dokumen Sertifikat Resmi",
+    },
+    skills: {
+      tag: "// MATRIKS KEAHLIAN",
+      title: "Keahlian Teknis & Alat Kerja",
+      subtitle:
+        "Kombinasi keahlian teknis operasional, administrasi data, jaringan komputer, dan perancangan antarmuka digital.",
+      hardSkillsTitle: "Keahlian Teknis (Hard Skills)",
+      softSkillsTitle: "Karakter Profesional (Soft Skills)",
+    },
+    projects: {
+      tag: "// PORTOFOLIO PROYEK",
+      title: "Studi Kasus & Implementasi Nyata",
+      subtitle:
+        "Portofolio inisiatif perancangan sistem antarmuka, protokol penanganan insiden, dan administrasi data terukur.",
+    },
+    contact: {
+      tag: "// HUBUNGI SAYA",
+      title: "Mari Berdiskusi & Berkolaborasi",
+      subtitle:
+        "Terbuka untuk kesempatan kerja penuh waktu, kontrak, maupun konsultasi teknis di area Bandung maupun secara remote.",
+      locationLabel: "LOKASI DOMISILI",
+      locationVal: "Bandung, Jawa Barat",
+      cvCardTitle: "Berkas Dokumen CV Resmi",
+      cvCardDesc: "Unduh berkas CV-Rangga_Cahyadi-IT-Admin-IN.pdf asli.",
+      btnDownload: "Unduh Berkas CV (.pdf)",
+      docxLink: "Tersedia juga versi Microsoft Word (.docx)",
+      formTitle: "Kirim Pesan Langsung",
+      formName: "Nama Anda / Perusahaan",
+      formContact: "No. WhatsApp / Email Anda",
+      formMessage: "Pesan atau Penawaran Kerja",
+      btnSend: "Kirim via WhatsApp",
+      toastSuccess: "Pesan siap dikirim via WhatsApp.",
+      toastError: "Harap isi nama dan pesan Anda.",
+    },
+    footer: {
+      tagline: "IT Technical Support • IT Administrator",
+      backToTop: "Kembali ke Atas",
+      copyright: "© 2026 Rangga Cahyadi. Seluruh hak cipta dilindungi undang-undang.",
+    },
+  },
+  en: {
+    nav: {
+      about: "About",
+      education: "Education",
+      experience: "Experience",
+      certificates: "Certificates",
+      skills: "Skills",
+      projects: "Projects",
+      contact: "Contact",
+      downloadCv: "Download CV",
+    },
+    hero: {
+      statusBadge: "Open to Work • IT Support & IT Administration",
+      name: "Rangga Cahyadi",
+      headline: "IT Technical Support • IT Administrator • UI/UX",
+      bio: "Associate Degree in Informatics Management with verified hands-on expertise in IT Technical Support, system administration, and network infrastructure. Experienced in troubleshooting hardware and software (PCs, Epson Printers, PoE CCTV systems), OS deployment, and structured data reporting via Microsoft Excel (PivotTable & HLOOKUP). Certified by Cisco Networking Academy in computer networking & cybersecurity, dedicated to delivering prompt, reliable, and scalable technical solutions.",
+      pillars: [
+        "Hardware, Printer & CCTV Troubleshooting",
+        "LAN Networking & Cisco CCNA Certified",
+        "Excel PivotTable, HLOOKUP & IT Archiving",
+        "UI/UX Designer (Figma Prototyping)",
+      ],
+      btnDownload: "Download Official Resume (.pdf)",
+      btnContact: "Get in Touch",
+      btnExplore: "Explore Experience & Projects",
+    },
+    about: {
+      tag: "// EDUCATION & CREDENTIALS",
+      title: "Educational Background & Alma Mater",
+      period: "2021 – 2024",
+      institution: "Politeknik Negeri Lampung",
+      location: "Bandar Lampung, Indonesia",
+      majorLabel: "Major Program:",
+      major: "Associate Degree in Informatics Management",
+      status: "Status: Graduated",
+      curriculum:
+        "Applied curriculum covers computer hardware & software maintenance, networking design (LAN/VLAN), structured databases, management information systems, and digital UI/UX interface design.",
+      careerFocusTitle: "🎯 Career Focus & Interests:",
+      careerFocusDesc:
+        "Actively expanding career in IT Support, Technical Field Support, and IT Administration, backed by robust fundamentals in Cisco Networking and UI/UX Design.",
+    },
+    terminal: {
+      header: "rangga@tech-terminal: ~ (bash)",
+      greeting: "System Online. Type 'help' for available commands.",
+      commands: {
+        help: "Available commands: profile, skills, contact, clear",
+      },
+    },
+    experience: {
+      tag: "// WORK EXPERIENCE",
+      title: "Professional Work Experience",
+      subtitle:
+        "Track record of technical contributions in IT administration, on-site technical support, and UI/UX design.",
+      activeBadge: "Current Role",
+      internBadge: "Internship",
+      fieldShowcaseTitle: "IT Fieldwork & Technical Documentation",
+      fieldShowcaseSubtitle:
+        "Visual proof of hands-on hardware repairs & server network maintenance (click to view details)",
+      fieldBadge: "Hands-on Fieldwork",
+      photo1: {
+        badge: "Hardware Troubleshooting & Repair",
+        caption:
+          "PC and workstation troubleshooting, printer hardware repair, cartridge/mechanical maintenance, and operational quality testing.",
+      },
+      photo2: {
+        badge: "Server Network & PoE CCTV Maintenance",
+        caption:
+          "On-site connectivity verification in server rooms: structured UTP/LAN cabling, switch/router rack monitoring, and network stability testing. Server maintenance and PoE CCTV systems.",
+      },
+      items: [
+        {
+          company: "SPPG Kebon Kangkung",
+          location: "Bandung, Indonesia",
+          role: "IT Administrator",
+          period: "July 2026 – Present",
+          isCurrent: true,
+          bullets: [
+            "Managed data processing and routine executive reporting using Microsoft Excel, including PivotTable and HLOOKUP formulas.",
+            "Conducted fundamental troubleshooting on PCs, printers, and CCTV surveillance systems to resolve operational disruptions.",
+            "Provided tier-1 office software support and resolved desktop operating system issues.",
+            "Organized, audited, and archived critical digital files to ensure continuous business workflows.",
+            "Prepared technical data and presentations for weekly management review meetings.",
+            "Designed and published digital pamphlets and event media utilizing Canva.",
+          ],
+          skills: [
+            "Microsoft Excel",
+            "PivotTable & HLOOKUP",
+            "PC, Printer & CCTV",
+            "Digital Archiving",
+            "Canva",
+          ],
+        },
+        {
+          company: "CV. Cahaya Mandiri Gemilang",
+          location: "West Jakarta, Indonesia",
+          role: "IT Technical Support",
+          period: "August 2024 – July 2026",
+          isCurrent: false,
+          bullets: [
+            "Diagnosed and resolved hardware/software malfunctions across desktop computers (PCs), printers, CCTV, and peripheral devices.",
+            "Executed hardware health checks, official driver installations, and diagnostic audits to guarantee uninterrupted operations.",
+            "Troubleshot basic network connectivity, including structured LAN cabling and client-side network interfaces.",
+            "Carried out on-site field inspections and handled immediate technical incidents according to SLA standards.",
+          ],
+          skills: [
+            "PC & Hardware Troubleshooting",
+            "Driver & OS Deployment",
+            "LAN Basic Networking",
+            "Field Inspections",
+          ],
+        },
+        {
+          company: "Yayasan Edukasi Wakaf Indonesia",
+          location: "Yogyakarta, Indonesia",
+          role: "UI/UX DESIGNER",
+          status: "Internship",
+          period: "February 2024 – June 2024",
+          isCurrent: false,
+          bullets: [
+            "Designed responsive website user interfaces in Figma based on specified project requirements.",
+            "Created structured wireframes and interactive prototypes to guide development implementation.",
+            "Structured intuitive navigation flows to simplify user access across digital product features.",
+            "Iterated design assets in response to feedback and usability testing from developer peers.",
+          ],
+          skills: [
+            "Figma",
+            "Wireframing",
+            "Interactive Prototyping",
+            "User Flow Architecture",
+            "Design Evaluation",
+          ],
+        },
+      ],
+    },
+    certificates: {
+      tag: "// OFFICIAL CERTIFICATIONS",
+      title: "Licenses & Verified Certifications",
+      subtitle:
+        "Accredited credentials from Cisco Networking Academy and Dicoding Indonesia certifying industry readiness.",
+      viewPdf: "View PDF Document",
+      verify: "Verify Credential",
+      modalTitle: "Official Certificate Preview",
+    },
+    skills: {
+      tag: "// TECHNICAL SKILLS MATRIX",
+      title: "Technical Skills & Toolset",
+      subtitle:
+        "Balanced blend of technical hardware support, systems administration, network engineering, and UI design.",
+      hardSkillsTitle: "Technical Proficiencies (Hard Skills)",
+      softSkillsTitle: "Professional Attributes (Soft Skills)",
+    },
+    projects: {
+      tag: "// PROJECT SHOWCASE",
+      title: "Case Studies & Implementations",
+      subtitle:
+        "Demonstrated experience in UI/UX architecture, hardware incident protocols, and automated office workflows.",
+    },
+    contact: {
+      tag: "// GET IN TOUCH",
+      title: "Let's Connect & Collaborate",
+      subtitle:
+        "Open for full-time employment, contract projects, and IT consulting opportunities in Bandung or remotely.",
+      locationLabel: "CURRENT LOCATION",
+      locationVal: "Bandung, West Java, Indonesia",
+      cvCardTitle: "Official Resume Document",
+      cvCardDesc: "Download verified CV-Rangga_Cahyadi-IT-Admin-IN.pdf (ATS-friendly).",
+      btnDownload: "Download Resume (.pdf)",
+      docxLink: "Also available in Microsoft Word (.docx) format",
+      formTitle: "Send a Direct Message",
+      formName: "Your Name / Company",
+      formContact: "Your WhatsApp / Email",
+      formMessage: "Message or Job Opportunity",
+      btnSend: "Send via WhatsApp",
+      toastSuccess: "Message is ready to send via WhatsApp.",
+      toastError: "Please fill in your name and message.",
+    },
+    footer: {
+      tagline: "IT Technical Support • IT Administrator",
+      backToTop: "Back to Top",
+      copyright: "© 2026 Rangga Cahyadi. All rights reserved.",
+    },
+  },
+};

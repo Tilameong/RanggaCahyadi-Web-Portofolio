@@ -9,6 +9,9 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/data/translations";
+
 interface HeroSectionProps {
   onDownloadCv: () => void;
   onOpenContact: () => void;
@@ -18,6 +21,9 @@ export default function HeroSection({
   onDownloadCv,
   onOpenContact,
 }: HeroSectionProps) {
+  const { lang } = useLanguage();
+  const t = translations[lang].hero;
+
   return (
     <section id="tentang" className="hero-section">
       <div className="container-custom">
@@ -27,51 +33,44 @@ export default function HeroSection({
             {/* Top Status Pill */}
             <div className="hero-status-badge">
               <span className="status-dot-pulse" style={{ flexShrink: 0 }} />
-              <span>Siap Bekerja &bull; IT Support &amp; IT Administration</span>
+              <span>{t.statusBadge}</span>
             </div>
 
             {/* Name */}
             <h1 className="hero-title">
-              Rangga Cahyadi
+              {t.name}
             </h1>
 
             {/* Professional Headline (Pengganti info kontak yang berulang) */}
             <div className="hero-headline">
-              IT Technical Support &bull; IT Administrator &bull; UI/UX
+              {t.headline}
             </div>
 
             {/* Value-Driven Professional Profile Summary */}
             <p className="hero-bio">
-              Lulusan <strong>D3 Manajemen Informatika</strong> dengan keahlian terapan di bidang{" "}
-              <strong>IT Technical Support</strong>, <strong>administrasi sistem</strong>, dan{" "}
-              <strong>infrastruktur jaringan</strong>. Berpengalaman menangani troubleshooting
-              perangkat keras dan lunak (PC, Printer Epson, CCTV PoE), instalasi sistem operasi,
-              serta pengolahan data terstruktur menggunakan{" "}
-              <strong>Microsoft Excel (PivotTable &amp; HLOOKUP)</strong>. Memiliki sertifikasi resmi{" "}
-              <strong>Cisco Networking Academy</strong> di bidang networking &amp; cybersecurity,
-              berorientasi pada penyelesaian kendala teknis yang cepat, rapi, dan terukur.
+              {t.bio}
             </p>
 
             {/* 4 Value Pillars: Informatif, Padat, & Menjual */}
             <div className="hero-points-grid">
               <div className="hero-point-item">
                 <CheckCircle size={15} color="var(--orange-light)" style={{ flexShrink: 0 }} />
-                <span>Troubleshooting Hardware, Printer &amp; CCTV</span>
+                <span>{t.pillars[0]}</span>
               </div>
 
               <div className="hero-point-item">
                 <CheckCircle size={15} color="var(--indigo-light)" style={{ flexShrink: 0 }} />
-                <span>Jaringan LAN &amp; Cisco CCNA Certified</span>
+                <span>{t.pillars[1]}</span>
               </div>
 
               <div className="hero-point-item">
                 <CheckCircle size={15} color="#34d399" style={{ flexShrink: 0 }} />
-                <span>Excel PivotTable, HLOOKUP &amp; Arsip IT</span>
+                <span>{t.pillars[2]}</span>
               </div>
 
               <div className="hero-point-item">
                 <CheckCircle size={15} color="#38bdf8" style={{ flexShrink: 0 }} />
-                <span>UI/UX Designer (Figma Prototyping)</span>
+                <span>{t.pillars[3]}</span>
               </div>
             </div>
 
@@ -83,7 +82,7 @@ export default function HeroSection({
                 id="btn-hero-download"
               >
                 <Download size={16} />
-                <span>Unduh CV Resmi (.pdf)</span>
+                <span>{t.btnDownload}</span>
               </button>
 
               <button
@@ -91,14 +90,14 @@ export default function HeroSection({
                 className="btn-secondary"
               >
                 <MessageSquare size={16} />
-                <span>Hubungi Saya</span>
+                <span>{t.btnContact}</span>
               </button>
 
               <a
                 href="#pengalaman"
                 className="btn-ghost"
               >
-                <span>Lihat Pengalaman &amp; Proyek</span>
+                <span>{t.btnExplore}</span>
                 <ArrowRight size={15} />
               </a>
             </div>

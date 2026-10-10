@@ -11,6 +11,9 @@ import {
   X,
 } from "lucide-react";
 
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/data/translations";
+
 interface FieldPhotoItem {
   src: string;
   alt: string;
@@ -20,72 +23,26 @@ interface FieldPhotoItem {
 
 export default function ExperienceSection() {
   const [selectedPhoto, setSelectedPhoto] = useState<FieldPhotoItem | null>(null);
+  const { lang } = useLanguage();
+  const t = translations[lang].experience;
 
-  const experiences = [
-    {
-      company: "SPPG Kebon Kangkung",
-      location: "Bandung",
-      role: "Admin IT",
-      period: "Juli 2026 – Sekarang",
-      isCurrent: true,
-      badgeColor: "var(--orange-accent)",
-      bullets: [
-        "Mengelola pengolahan data dan penyusunan laporan menggunakan Microsoft Excel, termasuk PivotTable dan HLOOKUP.",
-        "Melakukan troubleshooting dasar pada perangkat PC, printer, dan CCTV untuk mengidentifikasi serta menangani kendala operasional.",
-        "Mendukung penggunaan aplikasi perkantoran serta menangani kendala dasar pada perangkat lunak sesuai kebutuhan.",
-        "Mengelola dan mengarsipkan data serta dokumen digital untuk mendukung kelancaran operasional.",
-        "Menyiapkan data dan dokumentasi untuk kebutuhan rapat mingguan (weekly meeting).",
-        "Membuat dan mengedit pamflet serta materi publikasi kegiatan menggunakan Canva.",
-      ],
-      skills: ["Microsoft Excel", "PivotTable & HLOOKUP", "PC, Printer & CCTV", "Dokumen Digital", "Canva"],
-    },
-    {
-      company: "CV. Cahaya Mandiri Gemilang",
-      location: "Jakarta Barat",
-      role: "IT Technical Support",
-      period: "Agustus 2024 – Juli 2026",
-      isCurrent: false,
-      badgeColor: "var(--indigo-primary)",
-      bullets: [
-        "Melakukan troubleshooting dan penanganan gangguan pada perangkat komputer (PC), printer, CCTV, hardware, dan software.",
-        "Melakukan pemeriksaan perangkat, instalasi driver, serta pengecekan fungsi perangkat untuk memastikan operasional berjalan dengan baik.",
-        "Melakukan troubleshooting jaringan dasar, termasuk pemeriksaan koneksi LAN dan konektivitas perangkat.",
-        "Melaksanakan pengecekan unit secara langsung di lapangan serta menangani kendala teknis sesuai kebutuhan operasional.",
-      ],
-      skills: ["Troubleshooting PC/Hardware", "Driver & Software", "Jaringan Dasar LAN", "Pemeriksaan Lapangan"],
-    },
-    {
-      company: "Yayasan Edukasi Wakaf Indonesia",
-      location: "Yogyakarta",
-      role: "UI/UX DESIGNER",
-      status: "Magang",
-      period: "Februari 2024 – Juni 2024",
-      isCurrent: false,
-      badgeColor: "#38bdf8",
-      bullets: [
-        "Merancang tampilan antarmuka website menggunakan Figma sesuai kebutuhan proyek.",
-        "Membuat wireframe dan prototype sebagai acuan pengembangan antarmuka website.",
-        "Menyusun alur navigasi untuk mempermudah pengguna mengakses fitur website.",
-        "Melakukan revisi desain berdasarkan evaluasi dan masukan dari tim.",
-      ],
-      skills: ["Figma", "Wireframe", "Prototype", "Alur Navigasi Website", "Evaluasi Desain"],
-    },
-  ];
+  const experiences = t.items.map((item, idx) => ({
+    ...item,
+    badgeColor: idx === 0 ? "var(--orange-accent)" : idx === 1 ? "var(--indigo-primary)" : "#38bdf8",
+  }));
 
   const fieldPhotos: FieldPhotoItem[] = [
     {
       src: "/assets/Project/Memperbaiki Printer Epson di Ruang Kerja.png",
-      alt: "Troubleshooting & Perbaikan Hardware",
-      badge: "Troubleshooting & Perbaikan Hardware",
-      caption:
-        "Troubleshooting perangkat komputer, perbaikan hardware printer, pemeriksaan catridge/mekanik, serta pengujian kelayakan operasional.",
+      alt: t.photo1.badge,
+      badge: t.photo1.badge,
+      caption: t.photo1.caption,
     },
     {
       src: "/assets/Project/Teknisi Jaringan di Ruang Server.png",
-      alt: "Maintenance Jaringan Server & CCTV PoE",
-      badge: "Maintenance Jaringan Server & CCTV PoE",
-      caption:
-        "Dokumentasi pemeriksaan konektivitas di ruang server: penataan kabel LAN (UTP), pemantauan koneksi rack switch/router, dan verifikasi kestabilan jaringan lokal. Maintenance jaringan server dan CCTV PoE.",
+      alt: t.photo2.badge,
+      badge: t.photo2.badge,
+      caption: t.photo2.caption,
     },
   ];
 
@@ -118,7 +75,7 @@ export default function ExperienceSection() {
               marginBottom: "8px",
             }}
           >
-            // PENGALAMAN KERJA
+            {t.tag}
           </div>
           <h2
             style={{
@@ -128,10 +85,10 @@ export default function ExperienceSection() {
               color: "#ffffff",
             }}
           >
-            Pengalaman Kerja Profesional
+            {t.title}
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginTop: "6px" }}>
-            Riwayat kontribusi teknis di bidang administrasi IT, dukungan teknis lapangan, dan perancangan UI/UX.
+            {t.subtitle}
           </p>
         </div>
 
@@ -174,12 +131,12 @@ export default function ExperienceSection() {
                           border: "1px solid rgba(56, 189, 248, 0.3)",
                         }}
                       >
-                        {exp.status}
+                        {t.internBadge}
                       </span>
                     )}
                     {exp.isCurrent && (
                       <span className="badge-status" style={{ padding: "2px 8px", fontSize: "0.75rem" }}>
-                        Posisi Aktif
+                        {t.activeBadge}
                       </span>
                     )}
                   </div>
@@ -306,10 +263,10 @@ export default function ExperienceSection() {
                     letterSpacing: "-0.01em",
                   }}
                 >
-                  Dokumentasi Lapangan Teknisi IT
+                  {t.fieldShowcaseTitle}
                 </h3>
                 <div style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-                  Bukti visual penanganan hardware &amp; jaringan server (klik untuk melihat detail)
+                  {t.fieldShowcaseSubtitle}
                 </div>
               </div>
             </div>
@@ -326,7 +283,7 @@ export default function ExperienceSection() {
                 fontWeight: 600,
               }}
             >
-              Hands-on Fieldwork
+              {t.fieldBadge}
             </span>
           </div>
 

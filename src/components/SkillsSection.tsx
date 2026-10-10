@@ -15,8 +15,12 @@ import {
   Palette,
   Sparkles,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/data/translations";
 
 export default function SkillsSection() {
+  const { lang } = useLanguage();
+  const t = translations[lang].skills;
   const hardSkills = [
     {
       name: "PC, Printer & CCTV Troubleshooting",
@@ -139,7 +143,7 @@ export default function SkillsSection() {
               marginBottom: "8px",
             }}
           >
-            // KEAHLIAN SESUAI CV
+            {t.tag}
           </div>
           <h2
             style={{
@@ -149,10 +153,10 @@ export default function SkillsSection() {
               color: "#ffffff",
             }}
           >
-            Matriks Keahlian &amp; Keterampilan
+            {t.title}
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginTop: "6px" }}>
-            Disusun secara simpel, poin demi poin, dan transparan sesuai kompetensi yang tertera di CV.
+            {t.subtitle}
           </p>
         </div>
 
@@ -198,8 +202,8 @@ export default function SkillsSection() {
                 >
                   <Wrench size={18} color="var(--orange-light)" />
                 </div>
-                <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "#ffffff" }}>
-                  Hard Skill (Teknis)
+                <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "#ffffff" }}>
+                  {t.hardSkillsTitle}
                 </h3>
               </div>
               <span
@@ -209,7 +213,7 @@ export default function SkillsSection() {
                   color: "var(--orange-light)",
                 }}
               >
-                9 Kompetensi
+                {lang === "in" ? "9 Kompetensi" : "9 Competencies"}
               </span>
             </div>
 
@@ -294,7 +298,7 @@ export default function SkillsSection() {
                   <HeartHandshake size={18} color="var(--indigo-light)" />
                 </div>
                 <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "#ffffff" }}>
-                  Soft Skill
+                  {t.softSkillsTitle}
                 </h3>
               </div>
 

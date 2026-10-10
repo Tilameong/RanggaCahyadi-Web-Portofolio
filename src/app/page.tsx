@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -43,54 +44,56 @@ export default function Home() {
   };
 
   return (
-    <main style={{ minHeight: "100vh", position: "relative" }}>
-      {/* Animated Tech Preloader */}
-      <LoadingScreen />
+    <LanguageProvider>
+      <main style={{ minHeight: "100vh", position: "relative" }}>
+        {/* Animated Tech Preloader */}
+        <LoadingScreen />
 
-      {/* Cyber ambient background overlay */}
-      <div className="cyber-bg-overlay" />
+        {/* Cyber ambient background overlay */}
+        <div className="cyber-bg-overlay" />
 
-      {/* Main Navigation */}
-      <Navbar onDownloadCv={handleDownloadCv} />
+        {/* Main Navigation */}
+        <Navbar onDownloadCv={handleDownloadCv} />
 
-      {/* Hero Section */}
-      <HeroSection
-        onDownloadCv={handleDownloadCv}
-        onOpenContact={scrollToContact}
-      />
+        {/* Hero Section */}
+        <HeroSection
+          onDownloadCv={handleDownloadCv}
+          onOpenContact={scrollToContact}
+        />
 
-      {/* About & Education & Terminal */}
-      <AboutSection />
+        {/* About & Education & Terminal */}
+        <AboutSection />
 
-      {/* Skills Matrix */}
-      <SkillsSection />
+        {/* Skills Matrix */}
+        <SkillsSection />
 
-      {/* Work Experiences */}
-      <ExperienceSection />
+        {/* Work Experiences */}
+        <ExperienceSection />
 
-      {/* Certificates & PDF Viewer */}
-      <CertificatesSection />
+        {/* Certificates & PDF Viewer */}
+        <CertificatesSection />
 
-      {/* Projects & Practical Case Studies */}
-      <ProjectsSection />
+        {/* Projects & Practical Case Studies */}
+        <ProjectsSection />
 
-      {/* Contact & Direct Actions */}
-      <ContactSection
-        onDownloadCv={handleDownloadCv}
-        showToast={showToast}
-      />
+        {/* Contact & Direct Actions */}
+        <ContactSection
+          onDownloadCv={handleDownloadCv}
+          showToast={showToast}
+        />
 
-      {/* Footer */}
-      <Footer />
+        {/* Footer */}
+        <Footer />
 
-      {/* Floating Action WhatsApp */}
-      <FloatingWhatsApp />
+        {/* Floating Action WhatsApp */}
+        <FloatingWhatsApp />
 
-      {/* Floating Toast Notification */}
-      <ToastNotification
-        message={toastMessage}
-        onClose={() => setToastMessage(null)}
-      />
-    </main>
+        {/* Floating Toast Notification */}
+        <ToastNotification
+          message={toastMessage}
+          onClose={() => setToastMessage(null)}
+        />
+      </main>
+    </LanguageProvider>
   );
 }

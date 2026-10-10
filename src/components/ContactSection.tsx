@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Copy, Check, Send, Download } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/data/translations";
 
 interface ContactSectionProps {
   onDownloadCv: () => void;
@@ -12,6 +14,9 @@ export default function ContactSection({
   onDownloadCv,
   showToast,
 }: ContactSectionProps) {
+  const { lang } = useLanguage();
+  const t = translations[lang].contact;
+
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [senderName, setSenderName] = useState("");
@@ -20,33 +25,33 @@ export default function ContactSection({
 
   const email = "tilameorangga@gmail.com";
   const phone = "0815-3923-5487";
-  const location = "Bandung, Jawa Barat";
+  const location = t.locationVal;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(email);
     setCopiedEmail(true);
-    showToast("Email berhasil disalin ke clipboard!");
+    showToast(lang === "in" ? "Email berhasil disalin ke clipboard!" : "Email copied to clipboard!");
     setTimeout(() => setCopiedEmail(false), 2000);
   };
 
   const handleCopyPhone = () => {
     navigator.clipboard.writeText(phone);
     setCopiedPhone(true);
-    showToast("Nomor WhatsApp berhasil disalin!");
+    showToast(lang === "in" ? "Nomor WhatsApp berhasil disalin!" : "WhatsApp number copied!");
     setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!senderName || !message) {
-      showToast("Harap isi nama dan pesan Anda.");
+      showToast(t.toastError);
       return;
     }
     const text = encodeURIComponent(
       `Halo Rangga, saya ${senderName} (${senderContact}). Pesan: ${message}`
     );
     window.open(`https://wa.me/6281539235487?text=${text}`, "_blank");
-    showToast("Pesan siap dikirim via WhatsApp.");
+    showToast(t.toastSuccess);
     setSenderName("");
     setSenderContact("");
     setMessage("");
@@ -81,7 +86,7 @@ export default function ContactSection({
               marginBottom: "8px",
             }}
           >
-            // KONTAK &amp; KOMUNIKASI
+            {t.tag}
           </div>
           <h2
             style={{
@@ -91,10 +96,10 @@ export default function ContactSection({
               color: "#ffffff",
             }}
           >
-            Informasi Kontak &amp; Saluran Langsung
+            {t.title}
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginTop: "6px" }}>
-            Terbuka untuk posisi IT Support, Technical Support, dan Administrasi IT di Bandung maupun area sekitarnya.
+            {t.subtitle}
           </p>
         </div>
 
@@ -239,7 +244,7 @@ export default function ContactSection({
                 <MapPin size={20} color="#34d399" />
               </div>
               <div>
-                <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>LOKASI DOMISILI</div>
+                <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>{t.locationLabel}</div>
                 <div style={{ fontSize: "0.98rem", fontWeight: 700, color: "#ffffff" }}>
                   {location}
                 </div>
@@ -256,10 +261,10 @@ export default function ContactSection({
               }}
             >
               <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "1rem", marginBottom: "4px" }}>
-                Berkas Dokumen CV Resmi
+                {t.cvCardTitle}
               </div>
               <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "14px" }}>
-                Unduh berkas CV-Rangga_Cahyadi-IT-Admin-IN.pdf asli.
+                {t.cvCardDesc}
               </p>
               <button
                 onClick={onDownloadCv}
@@ -267,7 +272,7 @@ export default function ContactSection({
                 style={{ width: "100%", justifyContent: "center", marginBottom: "8px" }}
               >
                 <Download size={16} />
-                <span>Unduh Berkas CV (.pdf)</span>
+                <span>{t.btnDownload}</span>
               </button>
               <a
                 href="/assets/CV/CV-Rangga Cahyadi-IT-Admin.docx"
@@ -280,7 +285,7 @@ export default function ContactSection({
                   textAlign: "center",
                 }}
               >
-                Tersedia juga versi Microsoft Word (.docx)
+                {t.docxLink}
               </a>
             </div>
           </div>
@@ -293,18 +298,18 @@ export default function ContactSection({
             }}
           >
             <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "#ffffff", marginBottom: "16px" }}>
-              Kirim Pesan Langsung
+              {t.formTitle}
             </h3>
 
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
               <div>
                 <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "6px" }}>
-                  Nama Anda / Perusahaan *
+                  {t.formName} *
                 </label>
                 <input
                   type="text"
                   required
-                  placeholder="Nama atau Instansi"
+                  placeholder={lang === "in" ? "Nama atau Instansi" : "Your Name or Company"}
                   value={senderName}
                   onChange={(e) => setSenderName(e.target.value)}
                   style={{
@@ -322,11 +327,11 @@ export default function ContactSection({
 
               <div>
                 <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "6px" }}>
-                  Kontak (Email / No. HP)
+                  {t.formContact}
                 </label>
                 <input
                   type="text"
-                  placeholder="email@perusahaan.com atau 0812..."
+                  placeholder={lang === "in" ? "email@perusahaan.com atau 0812..." : "email@company.com or +62..."}
                   value={senderContact}
                   onChange={(e) => setSenderContact(e.target.value)}
                   style={{
@@ -344,12 +349,12 @@ export default function ContactSection({
 
               <div>
                 <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "6px" }}>
-                  Pesan atau Kebutuhan Posisi *
+                  {t.formMessage} *
                 </label>
                 <textarea
                   required
                   rows={4}
-                  placeholder="Tuliskan pesan Anda..."
+                  placeholder={lang === "in" ? "Tuliskan pesan Anda..." : "Write your message or inquiry..."}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   style={{
@@ -377,7 +382,7 @@ export default function ContactSection({
                 }}
               >
                 <Send size={16} />
-                <span>Kirim via WhatsApp</span>
+                <span>{t.btnSend}</span>
               </button>
             </form>
           </div>

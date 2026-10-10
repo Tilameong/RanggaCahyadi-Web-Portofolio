@@ -2,63 +2,116 @@
 
 import React from "react";
 import { Layout, Server, Monitor, FileSpreadsheet, Check } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/data/translations";
 
 export default function ProjectsSection() {
+  const { lang } = useLanguage();
+  const t = translations[lang].projects;
+
   const projects = [
     {
-      title: "UI/UX Website Redesign & Wireframing (Figma)",
+      title:
+        lang === "in"
+          ? "UI/UX Website Redesign & Wireframing (Figma)"
+          : "UI/UX Website Redesign & Interactive Wireframing (Figma)",
       category: "UI/UX Design",
       icon: <Layout size={20} color="#38bdf8" />,
       accent: "#38bdf8",
       description:
-        "Perancangan antarmuka website berbasis Figma pada program magang Yayasan Edukasi Wakaf Indonesia. Menyusun wireframe, interaksi prototype, serta alur navigasi pengguna yang ringkas dan ramah pengguna.",
-      points: [
-        "Penyusunan arsitektur informasi dan user flow navigasi.",
-        "Pembuatan high-fidelity prototype interaktif di Figma.",
-        "Iterasi revisi desain berdasarkan evaluasi tim developer.",
-      ],
+        lang === "in"
+          ? "Perancangan antarmuka website berbasis Figma pada program magang Yayasan Edukasi Wakaf Indonesia. Menyusun wireframe, interaksi prototype, serta alur navigasi pengguna yang ringkas dan ramah pengguna."
+          : "Design of interactive web user interfaces in Figma during the internship program at Yayasan Edukasi Wakaf Indonesia. Produced wireframes, user flow diagrams, and accessible prototypes.",
+      points:
+        lang === "in"
+          ? [
+              "Penyusunan arsitektur informasi dan user flow navigasi.",
+              "Pembuatan high-fidelity prototype interaktif di Figma.",
+              "Iterasi revisi desain berdasarkan evaluasi tim developer.",
+            ]
+          : [
+              "Information architecture and user journey flow design.",
+              "High-fidelity clickable prototype development in Figma.",
+              "Design iteration based on frontend developer evaluation.",
+            ],
       tags: ["Figma", "UI/UX Design", "Wireframe", "Prototype", "User Flow"],
     },
     {
-      title: "Troubleshooting PC, Printer & Monitoring CCTV",
-      category: "IT Support & Maintenance",
+      title:
+        lang === "in"
+          ? "Troubleshooting PC, Printer & Monitoring CCTV"
+          : "PC, Printer Troubleshooting & CCTV Surveillance Setup",
+      category: lang === "in" ? "IT Support & Maintenance" : "IT Support & Field Maintenance",
       icon: <Monitor size={20} color="var(--orange-accent)" />,
       accent: "var(--orange-accent)",
       description:
-        "Prosedur penanganan insiden hardware dan periferal di lingkungan operasional kantor (SPPG Kebon Kangkung & CV. Cahaya Mandiri Gemilang) untuk meminimalisir waktu henti kerja (downtime).",
-      points: [
-        "Pemeriksaan cepat kerusakan PC (RAM, storage, OS, driver).",
-        "Perawatan printer dan konfigurasi shared printer kantor via LAN.",
-        "Pengecekan live view dan kontinuitas penyimpanan rekaman CCTV.",
-      ],
+        lang === "in"
+          ? "Prosedur penanganan insiden hardware dan periferal di lingkungan operasional kantor (SPPG Kebon Kangkung & CV. Cahaya Mandiri Gemilang) untuk meminimalisir waktu henti kerja (downtime)."
+          : "Standard operational incident resolution protocols for computer workstations, Epson printers, and CCTV cameras to minimize operational downtime.",
+      points:
+        lang === "in"
+          ? [
+              "Pemeriksaan cepat kerusakan PC (RAM, storage, OS, driver).",
+              "Perawatan printer dan konfigurasi shared printer kantor via LAN.",
+              "Pengecekan live view dan kontinuitas penyimpanan rekaman CCTV.",
+            ]
+          : [
+              "Rapid PC diagnostics (RAM, SSD, OS integrity, and official drivers).",
+              "Printer maintenance and shared network printer configuration over LAN.",
+              "PoE CCTV live view verification and surveillance storage continuity.",
+            ],
       tags: ["Troubleshooting", "PC Hardware", "Printer Setup", "CCTV DVR/NVR"],
     },
     {
-      title: "Desain Jaringan LAN & Segmentasi VLAN (Cisco)",
-      category: "Networking & Security",
+      title:
+        lang === "in"
+          ? "Desain Jaringan LAN & Segmentasi VLAN (Cisco)"
+          : "LAN Network Architecture & VLAN Segmentation (Cisco)",
+      category: lang === "in" ? "Jaringan & Keamanan" : "Networking & Security",
       icon: <Server size={20} color="var(--indigo-primary)" />,
       accent: "var(--indigo-primary)",
       description:
-        "Simulasi dan konfigurasi jaringan skala kantor dengan pemisahan traffic VLAN (Manajemen & Tamu), konfigurasi routing switch, dan pengamanan akses port perangkat.",
-      points: [
-        "Segmentasi VLAN untuk isolasi keamanan data antar departemen.",
-        "Konfigurasi router Cisco & MikroTik Winbox untuk manajemen IP.",
-        "Testing verifikasi konektivitas dan kestabilan transmisi data.",
-      ],
+        lang === "in"
+          ? "Simulasi dan konfigurasi jaringan skala kantor dengan pemisahan traffic VLAN (Manajemen & Tamu), konfigurasi routing switch, dan pengamanan akses port perangkat."
+          : "Enterprise network design featuring VLAN segmentation (Management vs Guest), router/switch configuration, and device port security.",
+      points:
+        lang === "in"
+          ? [
+              "Segmentasi VLAN untuk isolasi keamanan data antar departemen.",
+              "Konfigurasi router Cisco & MikroTik Winbox untuk manajemen IP.",
+              "Testing verifikasi konektivitas dan kestabilan transmisi data.",
+            ]
+          : [
+              "VLAN network segmentation for departmental security isolation.",
+              "Cisco CLI and MikroTik Winbox routing & DHCP configuration.",
+              "Data packet verification, ping latency, and transmission reliability tests.",
+            ],
       tags: ["Cisco CCNA", "VLAN", "MikroTik", "Subnetting", "Packet Tracer"],
     },
     {
-      title: "Otomatisasi Laporan & Administrasi Data (Excel)",
-      category: "IT Administration",
+      title:
+        lang === "in"
+          ? "Otomatisasi Laporan & Administrasi Data (Excel)"
+          : "Automated Executive Reporting & Data Management (Excel)",
+      category: lang === "in" ? "Administrasi IT" : "IT Administration",
       icon: <FileSpreadsheet size={20} color="#34d399" />,
       accent: "#34d399",
       description:
-        "Penyusunan laporan operasional terstruktur menggunakan Microsoft Excel tingkat lanjut untuk bahan tinjauan rapat mingguan (weekly meeting).",
-      points: [
-        "Pengolahan rekapitulasi data dengan PivotTable & PivotChart.",
-        "Penerapan formula logika HLOOKUP, VLOOKUP, dan validasi data.",
-        "Pengarsipan dokumen digital aman di Microsoft OneDrive & Teams.",
-      ],
+        lang === "in"
+          ? "Penyusunan laporan operasional terstruktur menggunakan Microsoft Excel tingkat lanjut untuk bahan tinjauan rapat mingguan (weekly meeting)."
+          : "Structured data reporting and analytics using advanced Microsoft Excel functions for executive management reviews and audits.",
+      points:
+        lang === "in"
+          ? [
+              "Pengolahan rekapitulasi data dengan PivotTable & PivotChart.",
+              "Penerapan formula logika HLOOKUP, VLOOKUP, dan validasi data.",
+              "Pengarsipan dokumen digital aman di Microsoft OneDrive & Teams.",
+            ]
+          : [
+              "Data aggregation and interactive summaries with PivotTable & PivotChart.",
+              "HLOOKUP, VLOOKUP, and rigorous data validation formulas.",
+              "Secure cloud document archiving using Microsoft OneDrive & Teams.",
+            ],
       tags: ["Microsoft Excel", "PivotTable", "HLOOKUP", "OneDrive", "Weekly Meeting"],
     },
   ];
@@ -92,7 +145,7 @@ export default function ProjectsSection() {
               marginBottom: "8px",
             }}
           >
-            // PORTOFOLIO &amp; IMPLEMENTASI
+            {t.tag}
           </div>
           <h2
             style={{
@@ -102,10 +155,10 @@ export default function ProjectsSection() {
               color: "#ffffff",
             }}
           >
-            Studi Kasus &amp; Portofolio Nyata
+            {t.title}
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginTop: "6px" }}>
-            Implementasi nyata keahlian di bidang UI/UX Design, IT Support, Jaringan Komputer, dan Administrasi Data.
+            {t.subtitle}
           </p>
         </div>
 

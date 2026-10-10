@@ -1,11 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Download, Menu, X, Layout, Layers } from "lucide-react";
+import { Download, Menu, X, Layers } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/data/translations";
 
 export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { lang, setLang } = useLanguage();
+  const t = translations[lang].nav;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,12 +20,13 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
   }, []);
 
   const navLinks = [
-    { name: "Tentang", href: "#tentang" },
-    { name: "Pendidikan", href: "#pendidikan" },
-    { name: "Pengalaman", href: "#pengalaman" },
-    { name: "Sertifikat", href: "#sertifikat" },
-    { name: "Keahlian", href: "#keahlian" },
-    { name: "Kontak", href: "#kontak" },
+    { name: t.about, href: "#tentang" },
+    { name: t.education, href: "#pendidikan" },
+    { name: t.experience, href: "#pengalaman" },
+    { name: t.certificates, href: "#sertifikat" },
+    { name: t.skills, href: "#keahlian" },
+    { name: t.projects, href: "#proyek" },
+    { name: t.contact, href: "#kontak" },
   ];
 
   return (
@@ -100,7 +105,7 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
           style={{
             display: "none",
             alignItems: "center",
-            gap: "26px",
+            gap: "24px",
           }}
           className="desktop-nav"
         >
@@ -110,7 +115,7 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
               href={link.href}
               style={{
                 color: "var(--text-secondary)",
-                fontSize: "0.9rem",
+                fontSize: "0.88rem",
                 fontWeight: 500,
                 transition: "color 0.15s ease",
               }}
@@ -126,8 +131,28 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
           ))}
         </nav>
 
-        {/* Action Button */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+        {/* Action Controls (IN | EN + Unduh CV + Mobile Burger) */}
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {/* Header Language Switcher IN | EN */}
+          <div className="header-lang-switcher" title="Pilih Bahasa / Choose Language">
+            <button
+              onClick={() => setLang("in")}
+              className={`lang-toggle-btn ${lang === "in" ? "active" : ""}`}
+              aria-label="Bahasa Indonesia"
+            >
+              IN
+            </button>
+            <span className="lang-toggle-sep">|</span>
+            <button
+              onClick={() => setLang("en")}
+              className={`lang-toggle-btn ${lang === "en" ? "active" : ""}`}
+              aria-label="English"
+            >
+              EN
+            </button>
+          </div>
+
+          {/* Download CV (Desktop) */}
           <button
             onClick={onDownloadCv}
             className="btn-primary nav-cv-btn"
@@ -137,9 +162,10 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
             }}
           >
             <Download size={15} />
-            <span>Unduh CV</span>
+            <span>{t.downloadCv}</span>
           </button>
 
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="mobile-menu-btn"
@@ -189,10 +215,68 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
               {link.name}
             </a>
           ))}
+
+          {/* Download CV link in mobile drawer */}
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onDownloadCv();
+            }}
+            className="btn-primary"
+            style={{
+              marginTop: "8px",
+              width: "100%",
+              justifyContent: "center",
+              padding: "10px",
+            }}
+          >
+            <Download size={16} />
+            <span>{t.downloadCv}</span>
+          </button>
         </div>
       )}
 
       <style jsx>{`
+        .header-lang-switcher {
+          display: inline-flex;
+          align-items: center;
+          gap: 2px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid var(--border-subtle);
+          border-radius: 6px;
+          padding: 3px 5px;
+        }
+
+        .lang-toggle-btn {
+          background: transparent;
+          border: 1px solid transparent;
+          color: var(--text-muted);
+          font-family: var(--font-mono);
+          font-size: 0.74rem;
+          font-weight: 700;
+          cursor: pointer;
+          padding: 3px 6px;
+          border-radius: 4px;
+          transition: all 0.15s ease;
+        }
+
+        .lang-toggle-btn:hover {
+          color: #ffffff;
+        }
+
+        .lang-toggle-btn.active {
+          background: rgba(99, 102, 241, 0.25);
+          color: #ffffff;
+          border-color: rgba(99, 102, 241, 0.5);
+          box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+        }
+
+        .lang-toggle-sep {
+          color: rgba(255, 255, 255, 0.2);
+          font-size: 0.72rem;
+          user-select: none;
+        }
+
         @media (min-width: 860px) {
           .desktop-nav {
             display: flex !important;

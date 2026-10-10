@@ -1,9 +1,12 @@
-"use client";
-
 import React from "react";
 import { ArrowUp, Layers } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/data/translations";
 
 export default function Footer() {
+  const { lang } = useLanguage();
+  const t = translations[lang].footer;
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -22,7 +25,7 @@ export default function Footer() {
                 Rangga Cahyadi
               </div>
               <div className="footer-tagline">
-                IT Technical Support &bull; IT Administrator
+                {t.tagline}
               </div>
             </div>
           </div>
@@ -32,14 +35,14 @@ export default function Footer() {
             onClick={scrollToTop}
             className="btn-ghost footer-top-btn"
           >
-            <span>Kembali ke Atas</span>
+            <span>{t.backToTop}</span>
             <ArrowUp size={14} />
           </button>
         </div>
 
         {/* Clean Copyright Line */}
         <div className="footer-copy">
-          &copy; 2026 Rangga Cahyadi. Seluruh hak cipta dilindungi undang-undang.
+          {t.copyright}
         </div>
       </div>
 

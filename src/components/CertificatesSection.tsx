@@ -3,8 +3,12 @@
 import React, { useState } from "react";
 import { Award, ShieldCheck, Eye, Download, FileText } from "lucide-react";
 import CertificateModal, { CertificateItem } from "./CertificateModal";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/data/translations";
 
 export default function CertificatesSection() {
+  const { lang } = useLanguage();
+  const t = translations[lang].certificates;
   const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
 
   const certificates: CertificateItem[] = [
@@ -12,9 +16,12 @@ export default function CertificatesSection() {
       id: "ccna-intro",
       title: "CCNA Introduction to Networks",
       issuer: "Cisco Networking Academy",
-      category: "Jaringan Komputer",
+      category: lang === "in" ? "Jaringan Komputer" : "Computer Networks",
       badge: "Cisco Certified",
-      description: "Penguasaan dasar protokol jaringan TCP/IP & OSI model, pengalamatan IPv4/IPv6, dan setup perangkat router/switch.",
+      description:
+        lang === "in"
+          ? "Penguasaan dasar protokol jaringan TCP/IP & OSI model, pengalamatan IPv4/IPv6, dan setup perangkat router/switch."
+          : "Mastery of foundational TCP/IP & OSI networking protocols, IPv4/IPv6 subnet addressing, and router/switch device configuration.",
       fileUrl: "/assets/Certificated/CCNA-_Introduction_to_Networks_certificate_tilameorangga-gmail-com_8cb2c868-a58c-4dd3-9753-19f943e9dcaa.pdf",
       accent: "var(--indigo-primary)",
     },
@@ -22,9 +29,12 @@ export default function CertificatesSection() {
       id: "ccna-switching",
       title: "CCNA Switching, Routing, and Wireless Essentials",
       issuer: "Cisco Networking Academy",
-      category: "Jaringan Komputer",
+      category: lang === "in" ? "Jaringan Komputer" : "Computer Networks",
       badge: "Cisco Certified",
-      description: "Konfigurasi VLAN, Inter-VLAN routing, STP, EtherChannel, DHCPv4/v6, keamanan port switch, dan konsep jaringan WLAN.",
+      description:
+        lang === "in"
+          ? "Konfigurasi VLAN, Inter-VLAN routing, STP, EtherChannel, DHCPv4/v6, keamanan port switch, dan konsep jaringan WLAN."
+          : "Configuration of VLANs, Inter-VLAN routing, STP, EtherChannel, DHCPv4/v6, switch port security, and enterprise WLAN concepts.",
       fileUrl: "/assets/Certificated/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate_tilameorangga-gmail-com_89de7f09-181e-484.pdf",
       accent: "var(--orange-accent)",
     },
@@ -32,9 +42,12 @@ export default function CertificatesSection() {
       id: "cybersecurity",
       title: "Cisco Introduction to Cybersecurity",
       issuer: "Cisco Networking Academy",
-      category: "Keamanan Siber",
+      category: lang === "in" ? "Keamanan Siber" : "Cybersecurity",
       badge: "Cyber Defense",
-      description: "Pemahaman fundamental serangan malware, phishing, mitigasi risiko data, dan pertahanan integritas sistem informasi.",
+      description:
+        lang === "in"
+          ? "Pemahaman fundamental serangan malware, phishing, mitigasi risiko data, dan pertahanan integritas sistem informasi."
+          : "Fundamental knowledge of malware threats, phishing detection, data breach mitigation, and IT system integrity defense.",
       fileUrl: "/assets/Certificated/Introduction_to_Cybersecurity_certificate_tilameorangga-gmail-com_3d76b311-c145-4649-8148-0d3580f2d5c2.pdf",
       accent: "#34d399",
     },
@@ -42,9 +55,12 @@ export default function CertificatesSection() {
       id: "pept-toeic",
       title: "English Proficiency Test (PEPT / TOEIC)",
       issuer: "International Testing Center",
-      category: "Bahasa Internasional",
-      badge: "Skor: 670",
-      description: "Kemahiran komunikasi bahasa Inggris kerja profesional dengan perolehan skor TOEIC 670 (Listening & Reading).",
+      category: lang === "in" ? "Bahasa Internasional" : "Language Proficiency",
+      badge: lang === "in" ? "Skor: 670" : "Score: 670",
+      description:
+        lang === "in"
+          ? "Kemahiran komunikasi bahasa Inggris kerja profesional dengan perolehan skor TOEIC 670 (Listening & Reading)."
+          : "Professional English workplace communication certified with an official TOEIC score of 670 (Listening & Reading).",
       fileUrl: "/assets/Certificated/Sertifikat Bahasa Inggris Toeic.pdf",
       accent: "#38bdf8",
     },
@@ -52,9 +68,12 @@ export default function CertificatesSection() {
       id: "ccna-award",
       title: "CCNA Course Completion Credential",
       issuer: "Cisco Networking Academy",
-      category: "Kredensial Cisco",
-      badge: "Sertifikat Kelulusan",
-      description: "Sertifikat resmi kelulusan kurikulum komprehensif Cisco Certified Network Associate.",
+      category: lang === "in" ? "Kredensial Cisco" : "Cisco Credential",
+      badge: lang === "in" ? "Sertifikat Kelulusan" : "Completion Award",
+      description:
+        lang === "in"
+          ? "Sertifikat resmi kelulusan kurikulum komprehensif Cisco Certified Network Associate."
+          : "Official credential recognizing completion of the comprehensive Cisco Certified Network Associate curriculum.",
       fileUrl: "/assets/Certificated/CCNA-Certificated.pdf",
       accent: "var(--indigo-primary)",
     },
@@ -62,9 +81,12 @@ export default function CertificatesSection() {
       id: "oracle-db",
       title: "Oracle Academy Course Certificate",
       issuer: "Oracle Academy",
-      category: "Basis Data & Query",
+      category: lang === "in" ? "Basis Data & Query" : "Databases & Query",
       badge: "Oracle Certified",
-      description: "Kompetensi struktur perancangan basis data relasional (RDBMS) dan penulisan sintaks SQL standar industri.",
+      description:
+        lang === "in"
+          ? "Kompetensi struktur perancangan basis data relasional (RDBMS) dan penulisan sintaks SQL standar industri."
+          : "Proficiency in relational database management structure (RDBMS) design and industry-standard SQL query syntax.",
       fileUrl: "/assets/Certificated/course_certificate Oracle.pdf",
       accent: "#f59e0b",
     },
@@ -99,7 +121,7 @@ export default function CertificatesSection() {
               marginBottom: "8px",
             }}
           >
-            // SERTIFIKAT KOMPETENSI
+            {t.tag}
           </div>
           <h2
             style={{
@@ -109,10 +131,10 @@ export default function CertificatesSection() {
               color: "#ffffff",
             }}
           >
-            Sertifikasi Resmi &amp; Kredensial
+            {t.title}
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginTop: "6px" }}>
-            Dokumen asli dapat di-preview secara langsung dalam format PDF atau diunduh sebagai bukti kualifikasi.
+            {t.subtitle}
           </p>
         </div>
 
@@ -213,7 +235,7 @@ export default function CertificatesSection() {
                   }}
                 >
                   <Eye size={14} />
-                  <span>Lihat PDF</span>
+                  <span>{t.viewPdf}</span>
                 </button>
 
                 <a
@@ -227,7 +249,7 @@ export default function CertificatesSection() {
                   }}
                 >
                   <Download size={14} />
-                  <span>Unduh</span>
+                  <span>{lang === "in" ? "Unduh" : "Download"}</span>
                 </a>
               </div>
             </div>

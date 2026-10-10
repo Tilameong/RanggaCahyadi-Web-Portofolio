@@ -4,7 +4,13 @@ import React from "react";
 import TerminalWidget from "./TerminalWidget";
 import { GraduationCap, Award, ShieldCheck, Wrench, CheckCircle2 } from "lucide-react";
 
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/data/translations";
+
 export default function AboutSection() {
+  const { lang } = useLanguage();
+  const t = translations[lang].about;
+
   return (
     <section
       id="pendidikan"
@@ -34,7 +40,7 @@ export default function AboutSection() {
               marginBottom: "8px",
             }}
           >
-            // PENDIDIKAN &amp; KOMPETENSI
+            {t.tag}
           </div>
           <h2
             style={{
@@ -44,7 +50,7 @@ export default function AboutSection() {
               color: "#ffffff",
             }}
           >
-            Latar Belakang Pendidikan &amp; Almamater
+            {t.title}
           </h2>
         </div>
 
@@ -98,13 +104,13 @@ export default function AboutSection() {
                       marginBottom: "2px",
                     }}
                   >
-                    2021 – 2024
+                    {t.period}
                   </div>
                   <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "#ffffff" }}>
-                    Politeknik Negeri Lampung
+                    {t.institution}
                   </h3>
                   <div style={{ fontSize: "0.95rem", color: "var(--text-secondary)", marginTop: "2px" }}>
-                    Bandar Lampung
+                    {t.location}
                   </div>
                 </div>
               </div>
@@ -124,8 +130,8 @@ export default function AboutSection() {
                 }}
               >
                 <div>
-                  <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Program Studi: </span>
-                  <strong style={{ color: "#ffffff", fontSize: "0.92rem" }}>D3 Manajemen Informatika</strong>
+                  <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>{t.majorLabel} </span>
+                  <strong style={{ color: "#ffffff", fontSize: "0.92rem" }}>{t.major}</strong>
                 </div>
                 <div
                   style={{
@@ -142,13 +148,12 @@ export default function AboutSection() {
                   }}
                 >
                   <CheckCircle2 size={14} />
-                  Status: Lulus
+                  {t.status}
                 </div>
               </div>
 
               <div style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                Kurikulum terapan mencakup pemeliharaan hardware &amp; software, perancangan jaringan komputer
-                (LAN/VLAN), basis data terstruktur, sistem informasi manajemen, serta perancangan antarmuka digital UI/UX.
+                {t.curriculum}
               </div>
             </div>
 
@@ -161,12 +166,10 @@ export default function AboutSection() {
               }}
             >
               <h4 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#fff", marginBottom: "8px" }}>
-                🎯 Fokus Minat Karier:
+                {t.careerFocusTitle}
               </h4>
               <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                Berminat mengembangkan karier di bidang <strong>IT Support</strong>,{" "}
-                <strong>Technical Support</strong>, dan <strong>IT Administration</strong>, dengan keunggulan
-                tambahan di bidang <strong>Cisco Networking</strong> dan <strong>UI/UX Design</strong>.
+                {t.careerFocusDesc}
               </p>
             </div>
           </div>
