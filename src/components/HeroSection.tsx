@@ -11,6 +11,7 @@ import {
 
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
+import { GithubIcon, HackerRankIcon } from "./SocialIcons";
 
 interface HeroSectionProps {
   onDownloadCv: () => void;
@@ -99,6 +100,71 @@ export default function HeroSection({
               >
                 <span>{t.btnExplore}</span>
                 <ArrowRight size={15} />
+              </a>
+            </div>
+
+            {/* Direct External Profiles */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "10px",
+                marginTop: "16px",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "0.78rem",
+                  color: "var(--text-muted)",
+                  fontFamily: "var(--font-mono)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                {lang === "in" ? "Profil Online:" : "Online Profiles:"}
+              </span>
+
+              <a
+                href="https://github.com/Tilameong"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                style={{
+                  padding: "6px 12px",
+                  fontSize: "0.8rem",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  textDecoration: "none",
+                  borderRadius: "6px",
+                }}
+                title="Lihat GitHub Profil"
+              >
+                <GithubIcon size={15} color="#ffffff" />
+                <span>GitHub</span>
+              </a>
+
+              <a
+                href="https://www.hackerrank.com/profile/tilameorangga"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                style={{
+                  padding: "6px 12px",
+                  fontSize: "0.8rem",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  textDecoration: "none",
+                  borderRadius: "6px",
+                  borderColor: "rgba(0, 234, 100, 0.3)",
+                  color: "#00ea64",
+                }}
+                title="Lihat Profil HackerRank"
+              >
+                <HackerRankIcon size={15} />
+                <span style={{ color: "#ffffff" }}>HackerRank</span>
               </a>
             </div>
           </div>

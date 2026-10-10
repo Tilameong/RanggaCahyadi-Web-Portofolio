@@ -12,6 +12,7 @@ export interface CertificateItem {
   description: string;
   fileUrl: string;
   accent: string;
+  verifyUrl?: string;
 }
 
 interface CertificateModalProps {
@@ -112,6 +113,26 @@ export default function CertificateModal({ cert, onClose }: CertificateModalProp
               <Download size={15} />
               <span>Unduh PDF</span>
             </a>
+
+            {cert.verifyUrl && (
+              <a
+                href={cert.verifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                style={{
+                  padding: "8px 12px",
+                  fontSize: "0.82rem",
+                  borderRadius: "8px",
+                  borderColor: "rgba(0, 234, 100, 0.4)",
+                  color: "#00ea64",
+                  textDecoration: "none",
+                }}
+              >
+                <ShieldCheck size={15} />
+                <span>Verifikasi Profil</span>
+              </a>
+            )}
 
             <a
               href={cert.fileUrl}

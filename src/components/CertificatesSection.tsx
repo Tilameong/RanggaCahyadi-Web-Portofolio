@@ -89,6 +89,7 @@ export default function CertificatesSection() {
           : "Official HackerRank credential verifying competencies in modern React.js web development: state management, modular components, hooks, routing, and responsive UI API integration.",
       fileUrl: "/assets/Certificated/Frontend_Developer_React Certificate.pdf",
       accent: "#00ea64",
+      verifyUrl: "https://www.hackerrank.com/profile/tilameorangga",
     },
     {
       id: "oracle-db",

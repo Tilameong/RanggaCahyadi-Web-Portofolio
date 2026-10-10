@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowUp, Layers } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
+import { GithubIcon, HackerRankIcon } from "./SocialIcons";
 
 export default function Footer() {
   const { lang } = useLanguage();
@@ -28,6 +29,51 @@ export default function Footer() {
                 {t.tagline}
               </div>
             </div>
+          </div>
+
+          {/* Social Profiles */}
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <a
+              href="https://github.com/Tilameong"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+              style={{
+                padding: "7px 12px",
+                fontSize: "0.82rem",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "7px",
+                textDecoration: "none",
+                borderRadius: "6px",
+              }}
+              title="GitHub Profile"
+            >
+              <GithubIcon size={16} color="#ffffff" />
+              <span>GitHub</span>
+            </a>
+
+            <a
+              href="https://www.hackerrank.com/profile/tilameorangga"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+              style={{
+                padding: "7px 12px",
+                fontSize: "0.82rem",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "7px",
+                textDecoration: "none",
+                borderRadius: "6px",
+                color: "#00ea64",
+                borderColor: "rgba(0, 234, 100, 0.25)",
+              }}
+              title="HackerRank Profile"
+            >
+              <HackerRankIcon size={16} />
+              <span style={{ color: "#ffffff" }}>HackerRank</span>
+            </a>
           </div>
 
           {/* Clean Back to top */}

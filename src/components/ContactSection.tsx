@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Copy, Check, Send, Download } from "lucide-react";
+import { Mail, Phone, MapPin, Copy, Check, Send, Download, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
+import { GithubIcon, HackerRankIcon } from "./SocialIcons";
 
 interface ContactSectionProps {
   onDownloadCv: () => void;
@@ -248,6 +249,70 @@ export default function ContactSection({
                 <div style={{ fontSize: "0.98rem", fontWeight: 700, color: "#ffffff" }}>
                   {location}
                 </div>
+              </div>
+            </div>
+
+            {/* Developer Profiles (GitHub & HackerRank) */}
+            <div
+              className="glass-card"
+              style={{
+                padding: "20px 24px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+              }}
+            >
+              <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                {lang === "in" ? "PROFIL & REPOSITORI PENGEMBANG" : "DEVELOPER PROFILES & REPOSITORIES"}
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+                <a
+                  href="https://github.com/Tilameong"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                  style={{
+                    padding: "9px 12px",
+                    fontSize: "0.85rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    textDecoration: "none",
+                    borderRadius: "8px",
+                    background: "rgba(255, 255, 255, 0.03)",
+                    border: "1px solid var(--border-subtle)",
+                  }}
+                >
+                  <GithubIcon size={17} color="#ffffff" />
+                  <span style={{ fontWeight: 600, color: "#ffffff" }}>GitHub</span>
+                  <ExternalLink size={13} color="var(--text-muted)" />
+                </a>
+
+                <a
+                  href="https://www.hackerrank.com/profile/tilameorangga"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                  style={{
+                    padding: "9px 12px",
+                    fontSize: "0.85rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    textDecoration: "none",
+                    borderRadius: "8px",
+                    background: "rgba(0, 234, 100, 0.05)",
+                    border: "1px solid rgba(0, 234, 100, 0.25)",
+                    color: "#00ea64",
+                  }}
+                >
+                  <HackerRankIcon size={17} />
+                  <span style={{ fontWeight: 600, color: "#ffffff" }}>HackerRank</span>
+                  <ExternalLink size={13} color="var(--text-muted)" />
+                </a>
               </div>
             </div>
 
