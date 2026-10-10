@@ -120,6 +120,8 @@ export default function TerminalWidget() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "8px",
           borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
         }}
       >
@@ -143,7 +145,7 @@ export default function TerminalWidget() {
         </div>
 
         {/* Quick Quick action buttons */}
-        <div style={{ display: "flex", gap: "6px" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
           {["whoami", "skills", "certs", "contact", "clear"].map((qCmd) => (
             <button
               key={qCmd}

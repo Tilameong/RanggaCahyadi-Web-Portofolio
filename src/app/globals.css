@@ -278,7 +278,38 @@ body.cyber-body {
 }
 
 @media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+  }
   .container-custom {
-    padding: 0 16px;
+    padding: 0 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .glass-card {
+    padding: 20px 16px !important;
+  }
+  .modal-overlay {
+    padding: 10px !important;
+  }
+  .modal-content {
+    max-height: 94vh !important;
+    border-radius: 10px !important;
+  }
+  .btn-primary, .btn-secondary, .btn-ghost {
+    padding: 10px 16px !important;
+    font-size: 0.88rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-custom {
+    padding: 0 14px !important;
+  }
+  h1 {
+    font-size: 2rem !important;
+  }
+  h2 {
+    font-size: 1.65rem !important;
   }
 }
