@@ -1,12 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import {
   Download,
-  Phone,
-  Mail,
-  MapPin,
+  MessageSquare,
   CheckCircle,
   ArrowRight,
 } from "lucide-react";
@@ -37,58 +35,38 @@ export default function HeroSection({
               Rangga Cahyadi
             </h1>
 
-            {/* Contact details */}
-            <div className="hero-contacts">
-              <span className="contact-item">
-                <MapPin size={14} color="var(--indigo-light)" />
-                Bandung, Jawa Barat
-              </span>
-              <span className="bullet-sep">&bull;</span>
-              <a
-                href="https://wa.me/6281539235487"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-link"
-              >
-                <Phone size={14} color="var(--orange-light)" />
-                0815-3923-5487
-              </a>
-              <span className="bullet-sep">&bull;</span>
-              <a
-                href="mailto:tilameorangga@gmail.com"
-                className="contact-link"
-              >
-                <Mail size={14} color="var(--indigo-light)" />
-                tilameorangga@gmail.com
-              </a>
+            {/* Professional Headline (Pengganti info kontak yang berulang) */}
+            <div className="hero-headline">
+              IT Technical Support &bull; IT Administrator &bull; UI/UX
             </div>
 
-            {/* Exact CV Profile Summary */}
+            {/* Value-Driven Professional Profile Summary */}
             <p className="hero-bio">
-              Lulusan <strong>D3 Manajemen Informatika</strong> dengan pengalaman di bidang{" "}
-              <strong>IT Technical Support</strong> dan <strong>administrasi IT</strong>. Terampil
-              melakukan troubleshooting PC, printer, CCTV, hardware/software, jaringan dasar, serta
-              pengolahan data menggunakan Microsoft Excel. Memiliki sertifikat Cisco Networking
-              Academy di bidang networking dan cybersecurity, dengan fokus pada penyelesaian kendala
-              teknis, pemeliharaan perangkat, dan efisiensi administrasi. Berminat mengembangkan
-              karier di bidang IT Support, Technical Support, dan IT Administration.
+              Lulusan <strong>D3 Manajemen Informatika</strong> dengan keahlian terapan di bidang{" "}
+              <strong>IT Technical Support</strong>, <strong>administrasi sistem</strong>, dan{" "}
+              <strong>infrastruktur jaringan</strong>. Berpengalaman menangani troubleshooting
+              perangkat keras dan lunak (PC, Printer Epson, CCTV PoE), instalasi sistem operasi,
+              serta pengolahan data terstruktur menggunakan{" "}
+              <strong>Microsoft Excel (PivotTable &amp; HLOOKUP)</strong>. Memiliki sertifikasi resmi{" "}
+              <strong>Cisco Networking Academy</strong> di bidang networking &amp; cybersecurity,
+              berorientasi pada penyelesaian kendala teknis yang cepat, rapi, dan terukur.
             </p>
 
-            {/* Point-based highlights strip */}
+            {/* 4 Value Pillars: Informatif, Padat, & Menjual */}
             <div className="hero-points-grid">
               <div className="hero-point-item">
                 <CheckCircle size={15} color="var(--orange-light)" style={{ flexShrink: 0 }} />
-                <span>PC, Printer &amp; CCTV Troubleshooting</span>
+                <span>Troubleshooting Hardware, Printer &amp; CCTV</span>
               </div>
 
               <div className="hero-point-item">
                 <CheckCircle size={15} color="var(--indigo-light)" style={{ flexShrink: 0 }} />
-                <span>Cisco CCNA &amp; Cybersecurity Certified</span>
+                <span>Jaringan LAN &amp; Cisco CCNA Certified</span>
               </div>
 
               <div className="hero-point-item">
                 <CheckCircle size={15} color="#34d399" style={{ flexShrink: 0 }} />
-                <span>Excel PivotTable, HLOOKUP &amp; Admin IT</span>
+                <span>Excel PivotTable, HLOOKUP &amp; Arsip IT</span>
               </div>
 
               <div className="hero-point-item">
@@ -97,7 +75,7 @@ export default function HeroSection({
               </div>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons: Clean & Direct */}
             <div className="hero-btn-group">
               <button
                 onClick={onDownloadCv}
@@ -108,21 +86,19 @@ export default function HeroSection({
                 <span>Unduh CV Resmi (.pdf)</span>
               </button>
 
-              <a
-                href="https://wa.me/6281539235487?text=Halo%20Rangga%20Cahyadi,%20saya%20melihat%20portofolio%20IT%20Anda"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={onOpenContact}
                 className="btn-secondary"
               >
-                <Phone size={16} />
-                <span>WhatsApp: 0815-3923-5487</span>
-              </a>
+                <MessageSquare size={16} />
+                <span>Hubungi Saya</span>
+              </button>
 
               <a
-                href="#sertifikat"
+                href="#pengalaman"
                 className="btn-ghost"
               >
-                <span>Lihat Sertifikat</span>
+                <span>Lihat Pengalaman &amp; Proyek</span>
                 <ArrowRight size={15} />
               </a>
             </div>
@@ -131,7 +107,7 @@ export default function HeroSection({
           {/* Right Column on Desktop: Photo Card (Posisi Kanan) */}
           <div className="hero-photo-col">
             <div className="hero-photo-card">
-              {/* Photo Frame Container */}
+              {/* Photo Frame Container (Aspect Ratio Presisi 2/3 Anti-Stretch) */}
               <div className="hero-image-container">
                 <Image
                   src="/assets/Pas Photo/Potret Profesional dengan Logo Microsoft.png"
@@ -215,7 +191,6 @@ export default function HeroSection({
           box-sizing: border-box;
         }
 
-
         .hero-image-container {
           position: relative;
           border-radius: 12px;
@@ -227,8 +202,6 @@ export default function HeroSection({
           align-items: center;
           justify-content: center;
         }
-
-        
 
         .hero-status-badge {
           display: inline-flex;
@@ -253,41 +226,23 @@ export default function HeroSection({
           line-height: 1.15;
           color: #ffffff;
           letter-spacing: -0.02em;
-          margin-bottom: 12px;
+          margin-bottom: 6px;
           word-break: break-word;
           max-width: 100%;
         }
 
-        .hero-contacts {
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 12px;
-          font-size: 0.88rem;
-          color: var(--text-muted);
-          margin-bottom: 18px;
+        .hero-headline {
+          font-size: 1rem;
+          color: var(--indigo-light);
           font-family: var(--font-mono);
-          max-width: 100%;
-          box-sizing: border-box;
-        }
-
-        .contact-item,
-        .contact-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          color: var(--text-secondary);
-          text-decoration: none;
-          word-break: break-all;
-        }
-
-        .bullet-sep {
-          color: var(--text-dim);
+          font-weight: 600;
+          margin-bottom: 18px;
+          letter-spacing: 0.02em;
         }
 
         .hero-bio {
           color: var(--text-secondary);
-          font-size: 1rem;
+          font-size: 0.98rem;
           line-height: 1.75;
           margin-bottom: 24px;
           max-width: 100%;
@@ -351,7 +306,7 @@ export default function HeroSection({
           }
 
           .hero-photo-card {
-            max-width: 290px;
+            max-width: 280px;
             margin: 0 auto;
           }
 
@@ -375,28 +330,23 @@ export default function HeroSection({
             font-size: 1.85rem;
           }
 
-          .hero-contacts {
-            justify-content: center;
+          .hero-headline {
             text-align: center;
-            gap: 8px;
-            font-size: 0.82rem;
-          }
-
-          .bullet-sep {
-            display: none;
+            font-size: 0.85rem;
+            margin-bottom: 14px;
           }
 
           .hero-bio {
             text-align: center;
             font-size: 0.92rem;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
           }
 
           .hero-points-grid {
             grid-template-columns: 1fr;
             width: 100%;
             max-width: 320px;
-            margin: 0 auto 18px;
+            margin: 0 auto 20px;
           }
 
           .hero-point-item {
