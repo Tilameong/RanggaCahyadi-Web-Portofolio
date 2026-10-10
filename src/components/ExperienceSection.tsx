@@ -1,9 +1,25 @@
 "use client";
 
-import React from "react";
-import { Briefcase, Calendar, MapPin, ChevronRight, Check } from "lucide-react";
+import React, { useState } from "react";
+import Image from "next/image";
+import {
+  Briefcase,
+  Calendar,
+  MapPin,
+  Camera,
+  Maximize2,
+  X,
+  CheckCircle2,
+} from "lucide-react";
 
 export default function ExperienceSection() {
+  const [selectedPhoto, setSelectedPhoto] = useState<{
+    title: string;
+    category: string;
+    image: string;
+    description: string;
+  } | null>(null);
+
   const experiences = [
     {
       company: "SPPG Kebon Kangkung",
@@ -52,6 +68,25 @@ export default function ExperienceSection() {
         "Melakukan revisi desain berdasarkan evaluasi dan masukan dari tim.",
       ],
       skills: ["Figma", "Wireframe", "Prototype", "Alur Navigasi Website", "Evaluasi Desain"],
+    },
+  ];
+
+  const fieldProjects = [
+    {
+      title: "Troubleshooting & Perbaikan Printer Epson",
+      category: "Hardware & Peripheral Support",
+      description:
+        "Dokumentasi penanganan kendala teknis perangkat printer di ruang kerja operasional: pemeriksaan penarik kertas, instalasi driver, penanganan tinta, dan uji fungsi cetak.",
+      image: "/assets/Project/Memperbaiki Printer Epson di Ruang Kerja.png",
+      tag: "Printer & Hardware Support",
+    },
+    {
+      title: "Maintenance Jaringan di Ruang Server",
+      category: "Network Infrastructure Support",
+      description:
+        "Dokumentasi pemeriksaan konektivitas di ruang server: penataan kabel LAN (UTP), pemantauan koneksi rack switch/router, dan verifikasi kestabilan jaringan lokal.",
+      image: "/assets/Project/Teknisi Jaringan di Ruang Server.png",
+      tag: "Ruang Server & LAN",
     },
   ];
 
@@ -236,7 +271,328 @@ export default function ExperienceSection() {
             </div>
           ))}
         </div>
+
+        {/* Real Fieldwork Documentation Showcase (Dokumentasi Lapangan Teknisi IT) */}
+        <div style={{ marginTop: "44px" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "10px",
+              marginBottom: "18px",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <div
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  borderRadius: "8px",
+                  background: "rgba(99, 102, 241, 0.15)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Camera size={18} color="var(--indigo-light)" />
+              </div>
+              <div>
+                <h3
+                  style={{
+                    fontSize: "1.2rem",
+                    fontWeight: 700,
+                    color: "#ffffff",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  Dokumentasi Praktik &amp; Troubleshooting Lapangan
+                </h3>
+                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+                  Bukti visual penanganan perangkat keras &amp; infrastruktur jaringan di lapangan
+                </div>
+              </div>
+            </div>
+
+            <span
+              style={{
+                fontSize: "0.74rem",
+                fontFamily: "var(--font-mono)",
+                padding: "4px 10px",
+                borderRadius: "6px",
+                background: "rgba(16, 185, 129, 0.12)",
+                color: "#34d399",
+                border: "1px solid rgba(16, 185, 129, 0.3)",
+                fontWeight: 600,
+              }}
+            >
+              Hands-on Technical Support
+            </span>
+          </div>
+
+          {/* Photo Cards Grid */}
+          <div className="field-grid">
+            {fieldProjects.map((item, idx) => (
+              <div
+                key={idx}
+                className="field-card"
+                onClick={() => setSelectedPhoto(item)}
+              >
+                <div className="field-img-wrap">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 550px"
+                    style={{
+                      objectFit: "cover",
+                      objectPosition: "center",
+                    }}
+                  />
+                  <div className="field-overlay">
+                    <span className="field-zoom-badge">
+                      <Maximize2 size={14} />
+                      Lihat Foto Penuh
+                    </span>
+                  </div>
+                  <span className="field-pill">{item.tag}</span>
+                </div>
+
+                <div className="field-body">
+                  <div className="field-cat">{item.category}</div>
+                  <h4 className="field-title">{item.title}</h4>
+                  <p className="field-desc">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* Modal Lightbox Preview Foto Dokumentasi */}
+      {selectedPhoto && (
+        <div
+          className="modal-overlay"
+          onClick={() => setSelectedPhoto(null)}
+          style={{ zIndex: 1000 }}
+        >
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: "750px",
+              padding: "0",
+              overflow: "hidden",
+              border: "1px solid var(--border-hover)",
+            }}
+          >
+            {/* Modal Header */}
+            <div
+              style={{
+                padding: "16px 20px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderBottom: "1px solid var(--border-subtle)",
+                background: "#090d16",
+              }}
+            >
+              <div>
+                <span
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "var(--indigo-light)",
+                    fontFamily: "var(--font-mono)",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {selectedPhoto.category}
+                </span>
+                <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#fff", marginTop: "2px" }}>
+                  {selectedPhoto.title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setSelectedPhoto(null)}
+                style={{
+                  background: "rgba(255, 255, 255, 0.08)",
+                  border: "none",
+                  color: "#ffffff",
+                  padding: "6px",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Modal Image */}
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                height: "420px",
+                background: "#030712",
+              }}
+            >
+              <Image
+                src={selectedPhoto.image}
+                alt={selectedPhoto.title}
+                fill
+                sizes="800px"
+                style={{
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+
+            {/* Modal Caption */}
+            <div
+              style={{
+                padding: "16px 20px",
+                background: "#090d16",
+                borderTop: "1px solid var(--border-subtle)",
+              }}
+            >
+              <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                {selectedPhoto.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        .field-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .field-card {
+          border-radius: 14px;
+          border: 1px solid var(--border-subtle);
+          background: rgba(15, 23, 42, 0.7);
+          overflow: hidden;
+          cursor: pointer;
+          transition: all 0.25s ease;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .field-card:hover {
+          border-color: var(--indigo-primary);
+          transform: translateY(-3px);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .field-img-wrap {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16 / 10;
+          background: #0d1322;
+          overflow: hidden;
+        }
+
+        .field-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(9, 13, 22, 0.4);
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .field-card:hover .field-overlay {
+          opacity: 1;
+        }
+
+        .field-zoom-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 12px;
+          border-radius: 20px;
+          background: rgba(99, 102, 241, 0.9);
+          color: #ffffff;
+          font-size: 0.8rem;
+          font-weight: 600;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .field-pill {
+          position: absolute;
+          bottom: 10px;
+          left: 10px;
+          background: rgba(9, 13, 22, 0.85);
+          backdrop-filter: blur(8px);
+          color: var(--indigo-light);
+          border: 1px solid rgba(99, 102, 241, 0.3);
+          padding: 3px 8px;
+          border-radius: 5px;
+          font-size: 0.72rem;
+          font-family: var(--font-mono);
+          font-weight: 600;
+        }
+
+        .field-body {
+          padding: 18px 20px;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+
+        .field-cat {
+          font-size: 0.75rem;
+          font-family: var(--font-mono);
+          color: var(--orange-light);
+          margin-bottom: 4px;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+        }
+
+        .field-title {
+          font-size: 1.05rem;
+          font-weight: 700;
+          color: #ffffff;
+          margin-bottom: 8px;
+          line-height: 1.35;
+        }
+
+        .field-desc {
+          font-size: 0.86rem;
+          color: var(--text-secondary);
+          line-height: 1.55;
+          margin: 0;
+        }
+
+        @media (max-width: 768px) {
+          .field-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px;
+          }
+
+          .field-img-wrap {
+            aspect-ratio: 16 / 10;
+          }
+
+          .field-body {
+            padding: 16px;
+          }
+
+          .field-title {
+            font-size: 1rem;
+          }
+
+          .field-desc {
+            font-size: 0.84rem;
+          }
+        }
+      `}</style>
     </section>
   );
 }

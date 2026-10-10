@@ -159,28 +159,10 @@ export default function HeroSection({
 
               {/* Clean Caption Under Photo */}
               <div className="photo-caption">
-                <div style={{ textAlign: "left" }}>
-                  <div style={{ fontSize: "0.92rem", fontWeight: 700, color: "#ffffff" }}>
-                    Rangga Cahyadi
-                  </div>
-                  <div style={{ fontSize: "0.76rem", color: "var(--indigo-light)", fontFamily: "var(--font-mono)" }}>
-                    Politeknik Negeri Lampung
-                  </div>
-                </div>
-
-                <span
-                  style={{
-                    fontSize: "0.72rem",
-                    fontFamily: "var(--font-mono)",
-                    padding: "4px 9px",
-                    borderRadius: "6px",
-                    background: "rgba(99, 102, 241, 0.15)",
-                    color: "var(--indigo-light)",
-                    border: "1px solid rgba(99, 102, 241, 0.3)",
-                    fontWeight: 600,
-                    whiteSpace: "nowrap",
-                  }}
-                >
+                <span className="photo-name">
+                  Rangga Cahyadi
+                </span>
+                <span className="photo-badge">
                   Profil Profesional
                 </span>
               </div>
@@ -247,15 +229,37 @@ export default function HeroSection({
         }
 
         .photo-caption {
-          margin-top: 12px;
-          padding: 10px 12px;
+          margin-top: 10px;
+          padding: 8px 12px;
           border-radius: 8px;
           background: rgba(255, 255, 255, 0.03);
           border: 1px solid var(--border-subtle);
           display: flex;
           align-items: center;
-          justifyContent: space-between;
-          gap: 8px;
+          justify-content: space-between;
+          gap: 10px;
+          box-sizing: border-box;
+          width: 100%;
+        }
+
+        .photo-name {
+          font-size: 0.92rem;
+          font-weight: 700;
+          color: #ffffff;
+          white-space: nowrap;
+        }
+
+        .photo-badge {
+          font-size: 0.72rem;
+          font-family: var(--font-mono);
+          padding: 3px 8px;
+          border-radius: 5px;
+          background: rgba(99, 102, 241, 0.15);
+          color: var(--indigo-light);
+          border: 1px solid rgba(99, 102, 241, 0.3);
+          font-weight: 600;
+          white-space: nowrap;
+          flex-shrink: 0;
         }
 
         .hero-status-badge {
@@ -379,7 +383,7 @@ export default function HeroSection({
           }
 
           .hero-photo-card {
-            max-width: 260px;
+            max-width: 290px;
             margin: 0 auto;
           }
 
