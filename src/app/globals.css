@@ -335,3 +335,19 @@ body.cyber-body {
     font-size: 16px !important;
   }
 }
+
+/* Preloader Animation Styles */
+.preloader-spin-ring {
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+  border: 1.5px dashed rgba(99, 102, 241, 0.4);
+  animation: preloaderSpin 6s linear infinite;
+}
+
+@keyframes preloaderSpin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
