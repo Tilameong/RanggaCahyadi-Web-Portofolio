@@ -136,13 +136,19 @@ export default function HeroSection({
                 <Image
                   src="/assets/Pas Photo/Potret Profesional dengan Logo Microsoft.png"
                   alt="Rangga Cahyadi - Potret Profesional IT Support & Administration"
-                  fill
-                  sizes="(max-width: 640px) 270px, 330px"
+                  width={900}
+                  height={1350}
+                  priority
+                  sizes="(max-width: 768px) 280px, 320px"
                   style={{
+                    width: "100%",
+                    height: "100%",
+                    aspectRatio: "2 / 3",
                     objectFit: "cover",
                     objectPosition: "center top",
+                    display: "block",
+                    borderRadius: "12px",
                   }}
-                  priority
                 />
 
                 {/* Subtle bottom shadow overlay */}
@@ -151,13 +157,13 @@ export default function HeroSection({
                     position: "absolute",
                     inset: 0,
                     background:
-                      "linear-gradient(180deg, transparent 75%, rgba(15, 23, 42, 0.75) 100%)",
+                      "linear-gradient(180deg, transparent 78%, rgba(15, 23, 42, 0.75) 100%)",
                     pointerEvents: "none",
+                    borderRadius: "12px",
                   }}
                 />
               </div>
-
-              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -214,9 +220,12 @@ export default function HeroSection({
           position: relative;
           border-radius: 12px;
           overflow: hidden;
-          aspect-ratio: 3 / 4;
+          aspect-ratio: 2 / 3;
           width: 100%;
-          background-color: #0d1322;
+          background: #0d1322;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         
