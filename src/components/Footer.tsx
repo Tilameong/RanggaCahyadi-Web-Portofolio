@@ -2,7 +2,7 @@ import React from "react";
 import { ArrowUp, Layers } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
-import { GithubIcon, HackerRankIcon } from "./SocialIcons";
+import { GithubIcon, HackerRankIcon, InstagramIcon } from "./SocialIcons";
 
 export default function Footer() {
   const { lang } = useLanguage();
@@ -73,6 +73,28 @@ export default function Footer() {
             >
               <HackerRankIcon size={16} />
               <span style={{ color: "#ffffff" }}>HackerRank</span>
+            </a>
+
+            <a
+              href="https://www.instagram.com/tilameocahyadi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+              style={{
+                padding: "7px 12px",
+                fontSize: "0.82rem",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "7px",
+                textDecoration: "none",
+                borderRadius: "6px",
+                color: "#f472b6",
+                borderColor: "rgba(236, 72, 153, 0.25)",
+              }}
+              title="Instagram Profile (@tilameocahyadi)"
+            >
+              <InstagramIcon size={16} color="#f472b6" />
+              <span style={{ color: "#ffffff" }}>Instagram</span>
             </a>
           </div>
 

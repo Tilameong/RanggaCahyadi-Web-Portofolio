@@ -15,3 +15,20 @@ export const HackerRankIcon = ({ size = 16, color = "currentColor" }: { size?: n
     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.834 16.586h-2.112v-3.473h-3.444v3.473H8.166V7.414h2.112v3.473h3.444V7.414h2.112v9.172z" />
   </svg>
 );
+
+export const InstagramIcon = ({ size = 16, color = "currentColor" }: { size?: number; color?: string }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);

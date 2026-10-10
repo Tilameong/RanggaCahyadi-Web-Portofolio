@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Mail, Phone, MapPin, Copy, Check, Send, Download, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
-import { GithubIcon, HackerRankIcon } from "./SocialIcons";
+import { GithubIcon, HackerRankIcon, InstagramIcon } from "./SocialIcons";
 
 interface ContactSectionProps {
   onDownloadCv: () => void;
@@ -280,7 +280,7 @@ export default function ContactSection({
 
               <div
                 className="contact-profiles-grid"
-                style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}
+                style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "10px" }}
               >
                 <a
                   href="https://github.com/Tilameong"
@@ -326,6 +326,30 @@ export default function ContactSection({
                 >
                   <HackerRankIcon size={17} />
                   <span style={{ fontWeight: 600, color: "#ffffff" }}>HackerRank</span>
+                  <ExternalLink size={13} color="var(--text-muted)" />
+                </a>
+
+                <a
+                  href="https://www.instagram.com/tilameocahyadi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                  style={{
+                    padding: "9px 12px",
+                    fontSize: "0.85rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    textDecoration: "none",
+                    borderRadius: "8px",
+                    background: "rgba(236, 72, 153, 0.06)",
+                    border: "1px solid rgba(236, 72, 153, 0.28)",
+                    color: "#f472b6",
+                  }}
+                >
+                  <InstagramIcon size={17} color="#f472b6" />
+                  <span style={{ fontWeight: 600, color: "#ffffff" }}>Instagram</span>
                   <ExternalLink size={13} color="var(--text-muted)" />
                 </a>
               </div>

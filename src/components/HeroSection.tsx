@@ -11,7 +11,7 @@ import {
 
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
-import { GithubIcon, HackerRankIcon } from "./SocialIcons";
+import { GithubIcon, HackerRankIcon, InstagramIcon } from "./SocialIcons";
 
 interface HeroSectionProps {
   onDownloadCv: () => void;
@@ -166,6 +166,28 @@ export default function HeroSection({
               >
                 <HackerRankIcon size={15} />
                 <span style={{ color: "#ffffff" }}>HackerRank</span>
+              </a>
+
+              <a
+                href="https://www.instagram.com/tilameocahyadi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                style={{
+                  padding: "6px 12px",
+                  fontSize: "0.8rem",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  textDecoration: "none",
+                  borderRadius: "6px",
+                  borderColor: "rgba(236, 72, 153, 0.35)",
+                  color: "#f472b6",
+                }}
+                title="Instagram Rangga Cahyadi (@tilameocahyadi)"
+              >
+                <InstagramIcon size={15} color="#f472b6" />
+                <span style={{ color: "#ffffff" }}>Instagram</span>
               </a>
             </div>
           </div>
