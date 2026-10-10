@@ -8,21 +8,22 @@ export default function FloatingWhatsApp() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Show after scrolling a little or after 1.5s
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-      setShowTooltip(true);
-    }, 1500);
+    // Only show auto tooltip on desktop screen (> 768px)
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    setIsVisible(true);
 
-    // Hide tooltip after 6s automatically so it doesn't obstruct screen
-    const tooltipTimer = setTimeout(() => {
-      setShowTooltip(false);
-    }, 7000);
-
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(tooltipTimer);
-    };
+    if (!isMobile) {
+      const timer = setTimeout(() => {
+        setShowTooltip(true);
+      }, 2000);
+      const hideTimer = setTimeout(() => {
+        setShowTooltip(false);
+      }, 7000);
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(hideTimer);
+      };
+    }
   }, []);
 
   const waUrl =

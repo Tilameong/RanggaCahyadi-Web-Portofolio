@@ -9,8 +9,6 @@ import {
   MapPin,
   CheckCircle,
   ArrowRight,
-  UserCheck,
-  Sparkles,
 } from "lucide-react";
 
 interface HeroSectionProps {
@@ -22,7 +20,7 @@ export default function HeroSection({
   onDownloadCv,
   onOpenContact,
 }: HeroSectionProps) {
-  // Photo toggle state: "pro" (new photo with Microsoft logo) vs "formal" (black suit photo)
+  // Photo toggle: "pro" (new photo with Microsoft logo) vs "formal" (black suit photo)
   const [activePhoto, setActivePhoto] = useState<"pro" | "formal">("pro");
 
   const photos = {
@@ -43,101 +41,126 @@ export default function HeroSection({
   const currentPhoto = photos[activePhoto];
 
   return (
-    <section
-      id="tentang"
-      style={{
-        paddingTop: "110px",
-        paddingBottom: "50px",
-        position: "relative",
-        overflowX: "hidden",
-      }}
-    >
+    <section id="tentang" className="hero-section">
       <div className="container-custom">
         <div className="hero-grid">
+          {/* Photo Column - Placed gracefully at top on mobile, centered */}
+          <div className="hero-photo-col">
+            <div className="hero-photo-card">
+              {/* Dual Photo Switcher Tabs */}
+              <div className="photo-tabs">
+                <button
+                  type="button"
+                  onClick={() => setActivePhoto("pro")}
+                  className={`photo-tab-btn ${activePhoto === "pro" ? "active-pro" : ""}`}
+                >
+                  Foto Profesional
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActivePhoto("formal")}
+                  className={`photo-tab-btn ${activePhoto === "formal" ? "active-formal" : ""}`}
+                >
+                  Pas Foto Formal
+                </button>
+              </div>
+
+              {/* Photo Frame Container */}
+              <div className="hero-image-container">
+                <Image
+                  src={currentPhoto.src}
+                  alt={currentPhoto.alt}
+                  fill
+                  sizes="(max-width: 640px) 270px, 330px"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center top",
+                  }}
+                  priority
+                />
+
+                {/* Subtle bottom shadow overlay */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(180deg, transparent 75%, rgba(15, 23, 42, 0.75) 100%)",
+                    pointerEvents: "none",
+                  }}
+                />
+              </div>
+
+              {/* Caption Under Photo */}
+              <div className="photo-caption">
+                <div style={{ textAlign: "left" }}>
+                  <div style={{ fontSize: "0.88rem", fontWeight: 700, color: "#ffffff" }}>
+                    Rangga Cahyadi
+                  </div>
+                  <div style={{ fontSize: "0.75rem", color: "var(--indigo-light)", fontFamily: "var(--font-mono)" }}>
+                    Politeknik Negeri Lampung
+                  </div>
+                </div>
+
+                <span
+                  style={{
+                    fontSize: "0.72rem",
+                    fontFamily: "var(--font-mono)",
+                    padding: "3px 8px",
+                    borderRadius: "4px",
+                    background:
+                      activePhoto === "pro"
+                        ? "rgba(99, 102, 241, 0.15)"
+                        : "rgba(249, 115, 22, 0.15)",
+                    color:
+                      activePhoto === "pro" ? "var(--indigo-light)" : "var(--orange-light)",
+                    border:
+                      activePhoto === "pro"
+                        ? "1px solid rgba(99, 102, 241, 0.3)"
+                        : "1px solid rgba(249, 115, 22, 0.3)",
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {currentPhoto.badge}
+                </span>
+              </div>
+            </div>
+          </div>
+
           {/* Text & Information Column */}
           <div className="hero-content-col">
-            {/* Top Status Pill */}
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "5px 12px",
-                background: "rgba(16, 185, 129, 0.1)",
-                border: "1px solid rgba(16, 185, 129, 0.25)",
-                borderRadius: "9999px",
-                marginBottom: "16px",
-              }}
-            >
-              <span className="status-dot-pulse" />
-              <span
-                style={{
-                  color: "#34d399",
-                  fontSize: "0.82rem",
-                  fontWeight: 600,
-                }}
-              >
-                Siap Bekerja &bull; IT Support, Technical Support &amp; IT Administration
-              </span>
+            {/* Top Status Pill - Wrap-friendly, never overflows screen */}
+            <div className="hero-status-badge">
+              <span className="status-dot-pulse" style={{ flexShrink: 0 }} />
+              <span>Siap Bekerja &bull; IT Support &amp; IT Administration</span>
             </div>
 
             {/* Name */}
-            <h1
-              style={{
-                fontSize: "clamp(2.2rem, 4vw, 3.4rem)",
-                fontWeight: 800,
-                lineHeight: 1.15,
-                color: "#ffffff",
-                letterSpacing: "-0.03em",
-                marginBottom: "10px",
-              }}
-            >
+            <h1 className="hero-title">
               Rangga Cahyadi
             </h1>
 
             {/* Contact details line directly from CV */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
-                gap: "14px",
-                fontSize: "0.88rem",
-                color: "var(--text-muted)",
-                marginBottom: "18px",
-                fontFamily: "var(--font-mono)",
-              }}
-            >
-              <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <div className="hero-contacts">
+              <span className="contact-item">
                 <MapPin size={14} color="var(--indigo-light)" />
                 Bandung, Jawa Barat
               </span>
-              <span className="hide-on-mobile">&bull;</span>
+              <span className="bullet-sep">&bull;</span>
               <a
                 href="https://wa.me/6281539235487"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  color: "var(--text-secondary)",
-                  textDecoration: "none",
-                }}
+                className="contact-link"
               >
                 <Phone size={14} color="var(--orange-light)" />
                 0815-3923-5487
               </a>
-              <span className="hide-on-mobile">&bull;</span>
+              <span className="bullet-sep">&bull;</span>
               <a
                 href="mailto:tilameorangga@gmail.com"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  color: "var(--text-secondary)",
-                  textDecoration: "none",
-                }}
+                className="contact-link"
               >
                 <Mail size={14} color="var(--indigo-light)" />
                 tilameorangga@gmail.com
@@ -145,15 +168,7 @@ export default function HeroSection({
             </div>
 
             {/* Exact CV Profile Summary */}
-            <p
-              style={{
-                color: "var(--text-secondary)",
-                fontSize: "0.98rem",
-                lineHeight: 1.7,
-                marginBottom: "22px",
-                maxWidth: "640px",
-              }}
-            >
+            <p className="hero-bio">
               Lulusan <strong>D3 Manajemen Informatika</strong> dengan pengalaman di bidang{" "}
               <strong>IT Technical Support</strong> dan <strong>administrasi IT</strong>. Terampil
               melakukan troubleshooting PC, printer, CCTV, hardware/software, jaringan dasar, serta
@@ -164,94 +179,30 @@ export default function HeroSection({
             </p>
 
             {/* Point-based highlights strip */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-                gap: "10px",
-                marginBottom: "26px",
-                maxWidth: "620px",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "8px 12px",
-                  background: "rgba(255, 255, 255, 0.02)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: "8px",
-                  fontSize: "0.85rem",
-                  color: "#e2e8f0",
-                }}
-              >
+            <div className="hero-points-grid">
+              <div className="hero-point-item">
                 <CheckCircle size={15} color="var(--orange-light)" style={{ flexShrink: 0 }} />
                 <span>PC, Printer &amp; CCTV Troubleshooting</span>
               </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "8px 12px",
-                  background: "rgba(255, 255, 255, 0.02)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: "8px",
-                  fontSize: "0.85rem",
-                  color: "#e2e8f0",
-                }}
-              >
+              <div className="hero-point-item">
                 <CheckCircle size={15} color="var(--indigo-light)" style={{ flexShrink: 0 }} />
                 <span>Cisco CCNA &amp; Cybersecurity Certified</span>
               </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "8px 12px",
-                  background: "rgba(255, 255, 255, 0.02)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: "8px",
-                  fontSize: "0.85rem",
-                  color: "#e2e8f0",
-                }}
-              >
+              <div className="hero-point-item">
                 <CheckCircle size={15} color="#34d399" style={{ flexShrink: 0 }} />
                 <span>Excel PivotTable, HLOOKUP &amp; Admin IT</span>
               </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "8px 12px",
-                  background: "rgba(255, 255, 255, 0.02)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: "8px",
-                  fontSize: "0.85rem",
-                  color: "#e2e8f0",
-                }}
-              >
+              <div className="hero-point-item">
                 <CheckCircle size={15} color="#38bdf8" style={{ flexShrink: 0 }} />
                 <span>UI/UX Designer (Figma Prototyping)</span>
               </div>
             </div>
 
             {/* Action Buttons */}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "10px",
-                alignItems: "center",
-              }}
-              className="hero-btn-group"
-            >
+            <div className="hero-btn-group">
               <button
                 onClick={onDownloadCv}
                 className="btn-primary"
@@ -280,146 +231,25 @@ export default function HeroSection({
               </a>
             </div>
           </div>
-
-          {/* Photo Column - Fully Responsive with Both Photos Switcher */}
-          <div className="hero-photo-col">
-            <div className="hero-photo-card">
-              {/* Dual Photo Switcher Tabs */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "6px",
-                  marginBottom: "10px",
-                  padding: "3px",
-                  borderRadius: "8px",
-                  background: "rgba(255, 255, 255, 0.04)",
-                  border: "1px solid var(--border-subtle)",
-                }}
-              >
-                <button
-                  type="button"
-                  onClick={() => setActivePhoto("pro")}
-                  style={{
-                    padding: "6px 8px",
-                    borderRadius: "6px",
-                    fontSize: "0.76rem",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    border: "none",
-                    transition: "all 0.2s ease",
-                    background:
-                      activePhoto === "pro"
-                        ? "linear-gradient(135deg, #6366f1, #818cf8)"
-                        : "transparent",
-                    color: activePhoto === "pro" ? "#ffffff" : "var(--text-muted)",
-                  }}
-                >
-                  Foto Profesional
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActivePhoto("formal")}
-                  style={{
-                    padding: "6px 8px",
-                    borderRadius: "6px",
-                    fontSize: "0.76rem",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    border: "none",
-                    transition: "all 0.2s ease",
-                    background:
-                      activePhoto === "formal"
-                        ? "linear-gradient(135deg, #f97316, #fb923c)"
-                        : "transparent",
-                    color: activePhoto === "formal" ? "#ffffff" : "var(--text-muted)",
-                  }}
-                >
-                  Pas Foto Formal
-                </button>
-              </div>
-
-              {/* Photo Frame Container */}
-              <div className="hero-image-container">
-                <Image
-                  src={currentPhoto.src}
-                  alt={currentPhoto.alt}
-                  fill
-                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 340px"
-                  style={{
-                    objectFit: "cover",
-                    objectPosition: "center top",
-                  }}
-                  priority
-                />
-
-                {/* Subtle bottom gradient shadow */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(180deg, transparent 75%, rgba(15, 23, 42, 0.7) 100%)",
-                    pointerEvents: "none",
-                  }}
-                />
-              </div>
-
-              {/* Caption Under Photo */}
-              <div
-                style={{
-                  marginTop: "12px",
-                  padding: "10px 12px",
-                  borderRadius: "8px",
-                  background: "rgba(255, 255, 255, 0.03)",
-                  border: "1px solid var(--border-subtle)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <div style={{ fontSize: "0.88rem", fontWeight: 700, color: "#ffffff" }}>
-                    Rangga Cahyadi
-                  </div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--indigo-light)", fontFamily: "var(--font-mono)" }}>
-                    Politeknik Negeri Lampung
-                  </div>
-                </div>
-
-                <span
-                  style={{
-                    fontSize: "0.72rem",
-                    fontFamily: "var(--font-mono)",
-                    padding: "3px 8px",
-                    borderRadius: "4px",
-                    background:
-                      activePhoto === "pro"
-                        ? "rgba(99, 102, 241, 0.15)"
-                        : "rgba(249, 115, 22, 0.15)",
-                    color:
-                      activePhoto === "pro" ? "var(--indigo-light)" : "var(--orange-light)",
-                    border:
-                      activePhoto === "pro"
-                        ? "1px solid rgba(99, 102, 241, 0.3)"
-                        : "1px solid rgba(249, 115, 22, 0.3)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {currentPhoto.badge}
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
       <style jsx>{`
+        .hero-section {
+          padding-top: 115px;
+          padding-bottom: 60px;
+          position: relative;
+          width: 100%;
+          overflow-x: hidden;
+        }
+
         .hero-grid {
           display: grid;
-          grid-template-columns: 1.25fr 0.75fr;
-          gap: 40px;
+          grid-template-columns: 0.85fr 1.15fr;
+          gap: 48px;
           align-items: center;
+          width: 100%;
+          max-width: 100%;
         }
 
         .hero-photo-col {
@@ -431,12 +261,47 @@ export default function HeroSection({
 
         .hero-photo-card {
           width: 100%;
-          max-width: 330px;
+          max-width: 320px;
           border-radius: 16px;
           border: 1px solid var(--border-card);
           background: rgba(15, 23, 42, 0.85);
           padding: 12px;
           box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+          box-sizing: border-box;
+          margin: 0 auto;
+        }
+
+        .photo-tabs {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6px;
+          margin-bottom: 10px;
+          padding: 3px;
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid var(--border-subtle);
+        }
+
+        .photo-tab-btn {
+          padding: 6px 8px;
+          border-radius: 6px;
+          font-size: 0.76rem;
+          font-weight: 600;
+          cursor: pointer;
+          border: none;
+          transition: all 0.2s ease;
+          background: transparent;
+          color: var(--text-muted);
+        }
+
+        .photo-tab-btn.active-pro {
+          background: linear-gradient(135deg, #6366f1, #818cf8);
+          color: #ffffff;
+        }
+
+        .photo-tab-btn.active-formal {
+          background: linear-gradient(135deg, #f97316, #fb923c);
+          color: #ffffff;
         }
 
         .hero-image-container {
@@ -448,37 +313,214 @@ export default function HeroSection({
           background-color: #0d1322;
         }
 
-        @media (max-width: 900px) {
+        .photo-caption {
+          margin-top: 12px;
+          padding: 10px 12px;
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid var(--border-subtle);
+          display: flex;
+          align-items: center;
+          justifyContent: space-between;
+          gap: 8px;
+        }
+
+        .hero-content-col {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+
+        .hero-status-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 14px;
+          background: rgba(16, 185, 129, 0.1);
+          border: 1px solid rgba(16, 185, 129, 0.25);
+          border-radius: 9999px;
+          margin-bottom: 14px;
+          color: #34d399;
+          font-size: 0.82rem;
+          font-weight: 600;
+          max-width: 100%;
+          box-sizing: border-box;
+          word-break: break-word;
+        }
+
+        .hero-title {
+          font-size: clamp(2rem, 3.8vw, 3.2rem);
+          font-weight: 800;
+          line-height: 1.15;
+          color: #ffffff;
+          letter-spacing: -0.02em;
+          margin-bottom: 12px;
+          word-break: break-word;
+          max-width: 100%;
+        }
+
+        .hero-contacts {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 12px;
+          font-size: 0.88rem;
+          color: var(--text-muted);
+          margin-bottom: 18px;
+          font-family: var(--font-mono);
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+
+        .contact-item,
+        .contact-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: var(--text-secondary);
+          text-decoration: none;
+          word-break: break-all;
+        }
+
+        .bullet-sep {
+          color: var(--text-dim);
+        }
+
+        .hero-bio {
+          color: var(--text-secondary);
+          font-size: 0.98rem;
+          line-height: 1.7;
+          margin-bottom: 22px;
+          max-width: 640px;
+          word-break: break-word;
+        }
+
+        .hero-points-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+          margin-bottom: 26px;
+          width: 100%;
+          max-width: 620px;
+          box-sizing: border-box;
+        }
+
+        .hero-point-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid var(--border-subtle);
+          border-radius: 8px;
+          font-size: 0.85rem;
+          color: #e2e8f0;
+          box-sizing: border-box;
+          word-break: break-word;
+        }
+
+        .hero-btn-group {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          align-items: center;
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+
+        @media (max-width: 860px) {
+          .hero-section {
+            padding-top: 90px;
+            padding-bottom: 40px;
+          }
+
           .hero-grid {
             display: flex;
             flex-direction: column;
-            gap: 28px;
+            gap: 24px;
+            align-items: center;
+            width: 100%;
+            max-width: 100%;
           }
 
           .hero-photo-col {
-            order: -1; /* Display photo prominently at the top on mobile */
-            margin-bottom: 8px;
+            width: 100%;
+            display: flex;
+            justifyContent: center;
+            align-items: center;
+            margin: 0 auto;
           }
 
           .hero-photo-card {
-            max-width: 280px;
+            max-width: 270px;
+            margin: 0 auto;
+          }
+
+          .hero-content-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            padding: 0;
+          }
+
+          .hero-status-badge {
+            margin: 0 auto 12px;
+            text-align: center;
+            justify-content: center;
+          }
+
+          .hero-title {
+            text-align: center;
+            font-size: 1.85rem;
+          }
+
+          .hero-contacts {
+            justify-content: center;
+            text-align: center;
+            gap: 8px;
+            font-size: 0.82rem;
+          }
+
+          .bullet-sep {
+            display: none;
+          }
+
+          .hero-bio {
+            text-align: center;
+            font-size: 0.92rem;
+            margin-bottom: 18px;
+          }
+
+          .hero-points-grid {
+            grid-template-columns: 1fr;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 20px;
+          }
+
+          .hero-point-item {
+            justify-content: flex-start;
+            text-align: left;
           }
 
           .hero-btn-group {
+            flex-direction: column;
             width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
           }
 
           .hero-btn-group button,
           .hero-btn-group a {
-            flex: 1 1 100%;
-            text-align: center;
+            width: 100%;
             justify-content: center;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .hide-on-mobile {
-            display: none !important;
           }
         }
       `}</style>
