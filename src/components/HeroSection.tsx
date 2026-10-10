@@ -44,93 +44,9 @@ export default function HeroSection({
     <section id="tentang" className="hero-section">
       <div className="container-custom">
         <div className="hero-grid">
-          {/* Photo Column - Placed gracefully at top on mobile, centered */}
-          <div className="hero-photo-col">
-            <div className="hero-photo-card">
-              {/* Dual Photo Switcher Tabs */}
-              <div className="photo-tabs">
-                <button
-                  type="button"
-                  onClick={() => setActivePhoto("pro")}
-                  className={`photo-tab-btn ${activePhoto === "pro" ? "active-pro" : ""}`}
-                >
-                  Foto Profesional
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActivePhoto("formal")}
-                  className={`photo-tab-btn ${activePhoto === "formal" ? "active-formal" : ""}`}
-                >
-                  Pas Foto Formal
-                </button>
-              </div>
-
-              {/* Photo Frame Container */}
-              <div className="hero-image-container">
-                <Image
-                  src={currentPhoto.src}
-                  alt={currentPhoto.alt}
-                  fill
-                  sizes="(max-width: 640px) 270px, 330px"
-                  style={{
-                    objectFit: "cover",
-                    objectPosition: "center top",
-                  }}
-                  priority
-                />
-
-                {/* Subtle bottom shadow overlay */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(180deg, transparent 75%, rgba(15, 23, 42, 0.75) 100%)",
-                    pointerEvents: "none",
-                  }}
-                />
-              </div>
-
-              {/* Caption Under Photo */}
-              <div className="photo-caption">
-                <div style={{ textAlign: "left" }}>
-                  <div style={{ fontSize: "0.88rem", fontWeight: 700, color: "#ffffff" }}>
-                    Rangga Cahyadi
-                  </div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--indigo-light)", fontFamily: "var(--font-mono)" }}>
-                    Politeknik Negeri Lampung
-                  </div>
-                </div>
-
-                <span
-                  style={{
-                    fontSize: "0.72rem",
-                    fontFamily: "var(--font-mono)",
-                    padding: "3px 8px",
-                    borderRadius: "4px",
-                    background:
-                      activePhoto === "pro"
-                        ? "rgba(99, 102, 241, 0.15)"
-                        : "rgba(249, 115, 22, 0.15)",
-                    color:
-                      activePhoto === "pro" ? "var(--indigo-light)" : "var(--orange-light)",
-                    border:
-                      activePhoto === "pro"
-                        ? "1px solid rgba(99, 102, 241, 0.3)"
-                        : "1px solid rgba(249, 115, 22, 0.3)",
-                    fontWeight: 600,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {currentPhoto.badge}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Text & Information Column */}
+          {/* Left Column on Desktop: Text & Information (Lebih Lebar) */}
           <div className="hero-content-col">
-            {/* Top Status Pill - Wrap-friendly, never overflows screen */}
+            {/* Top Status Pill */}
             <div className="hero-status-badge">
               <span className="status-dot-pulse" style={{ flexShrink: 0 }} />
               <span>Siap Bekerja &bull; IT Support &amp; IT Administration</span>
@@ -141,7 +57,7 @@ export default function HeroSection({
               Rangga Cahyadi
             </h1>
 
-            {/* Contact details line directly from CV */}
+            {/* Contact details */}
             <div className="hero-contacts">
               <span className="contact-item">
                 <MapPin size={14} color="var(--indigo-light)" />
@@ -231,30 +147,125 @@ export default function HeroSection({
               </a>
             </div>
           </div>
+
+          {/* Right Column on Desktop: Photo Card (Posisi Kanan) */}
+          <div className="hero-photo-col">
+            <div className="hero-photo-card">
+              {/* Dual Photo Switcher Tabs */}
+              <div className="photo-tabs">
+                <button
+                  type="button"
+                  onClick={() => setActivePhoto("pro")}
+                  className={`photo-tab-btn ${activePhoto === "pro" ? "active-pro" : ""}`}
+                >
+                  Foto Profesional
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActivePhoto("formal")}
+                  className={`photo-tab-btn ${activePhoto === "formal" ? "active-formal" : ""}`}
+                >
+                  Pas Foto Formal
+                </button>
+              </div>
+
+              {/* Photo Frame Container */}
+              <div className="hero-image-container">
+                <Image
+                  src={currentPhoto.src}
+                  alt={currentPhoto.alt}
+                  fill
+                  sizes="(max-width: 640px) 270px, 330px"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center top",
+                  }}
+                  priority
+                />
+
+                {/* Subtle bottom shadow overlay */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(180deg, transparent 75%, rgba(15, 23, 42, 0.75) 100%)",
+                    pointerEvents: "none",
+                  }}
+                />
+              </div>
+
+              {/* Caption Under Photo */}
+              <div className="photo-caption">
+                <div style={{ textAlign: "left" }}>
+                  <div style={{ fontSize: "0.88rem", fontWeight: 700, color: "#ffffff" }}>
+                    Rangga Cahyadi
+                  </div>
+                  <div style={{ fontSize: "0.75rem", color: "var(--indigo-light)", fontFamily: "var(--font-mono)" }}>
+                    Politeknik Negeri Lampung
+                  </div>
+                </div>
+
+                <span
+                  style={{
+                    fontSize: "0.72rem",
+                    fontFamily: "var(--font-mono)",
+                    padding: "3px 8px",
+                    borderRadius: "4px",
+                    background:
+                      activePhoto === "pro"
+                        ? "rgba(99, 102, 241, 0.15)"
+                        : "rgba(249, 115, 22, 0.15)",
+                    color:
+                      activePhoto === "pro" ? "var(--indigo-light)" : "var(--orange-light)",
+                    border:
+                      activePhoto === "pro"
+                        ? "1px solid rgba(99, 102, 241, 0.3)"
+                        : "1px solid rgba(249, 115, 22, 0.3)",
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {currentPhoto.badge}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <style jsx>{`
         .hero-section {
-          padding-top: 115px;
+          padding-top: 110px;
           padding-bottom: 60px;
           position: relative;
           width: 100%;
           overflow-x: hidden;
         }
 
+        /* Desktop Mode: Text on LEFT (wider), Photo on RIGHT */
         .hero-grid {
           display: grid;
-          grid-template-columns: 0.85fr 1.15fr;
+          grid-template-columns: 1.35fr 0.65fr;
           gap: 48px;
           align-items: center;
           width: 100%;
           max-width: 100%;
         }
 
+        .hero-content-col {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+
         .hero-photo-col {
           display: flex;
-          justifyContent: center;
+          justifyContent: flex-end;
           align-items: center;
           width: 100%;
         }
@@ -268,7 +279,6 @@ export default function HeroSection({
           padding: 12px;
           box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
           box-sizing: border-box;
-          margin: 0 auto;
         }
 
         .photo-tabs {
@@ -325,16 +335,6 @@ export default function HeroSection({
           gap: 8px;
         }
 
-        .hero-content-col {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          text-align: left;
-          width: 100%;
-          max-width: 100%;
-          box-sizing: border-box;
-        }
-
         .hero-status-badge {
           display: inline-flex;
           align-items: center;
@@ -353,7 +353,7 @@ export default function HeroSection({
         }
 
         .hero-title {
-          font-size: clamp(2rem, 3.8vw, 3.2rem);
+          font-size: clamp(2.2rem, 4vw, 3.4rem);
           font-weight: 800;
           line-height: 1.15;
           color: #ffffff;
@@ -392,10 +392,10 @@ export default function HeroSection({
 
         .hero-bio {
           color: var(--text-secondary);
-          font-size: 0.98rem;
-          line-height: 1.7;
-          margin-bottom: 22px;
-          max-width: 640px;
+          font-size: 1rem;
+          line-height: 1.75;
+          margin-bottom: 24px;
+          max-width: 100%;
           word-break: break-word;
         }
 
@@ -405,7 +405,6 @@ export default function HeroSection({
           gap: 10px;
           margin-bottom: 26px;
           width: 100%;
-          max-width: 620px;
           box-sizing: border-box;
         }
 
@@ -426,38 +425,38 @@ export default function HeroSection({
         .hero-btn-group {
           display: flex;
           flex-wrap: wrap;
-          gap: 10px;
+          gap: 12px;
           align-items: center;
           width: 100%;
           max-width: 100%;
           box-sizing: border-box;
         }
 
+        /* Mobile Mode (< 860px): Clean Centered Stack */
         @media (max-width: 860px) {
           .hero-section {
-            padding-top: 90px;
-            padding-bottom: 40px;
+            padding-top: 85px;
+            padding-bottom: 35px;
           }
 
           .hero-grid {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 22px;
             align-items: center;
             width: 100%;
             max-width: 100%;
           }
 
           .hero-photo-col {
+            order: -1; /* Display photo clean on top on mobile */
+            justify-content: center;
             width: 100%;
-            display: flex;
-            justifyContent: center;
-            align-items: center;
             margin: 0 auto;
           }
 
           .hero-photo-card {
-            max-width: 270px;
+            max-width: 260px;
             margin: 0 auto;
           }
 
@@ -471,7 +470,7 @@ export default function HeroSection({
           }
 
           .hero-status-badge {
-            margin: 0 auto 12px;
+            margin: 0 auto 10px;
             text-align: center;
             justify-content: center;
           }
@@ -495,14 +494,14 @@ export default function HeroSection({
           .hero-bio {
             text-align: center;
             font-size: 0.92rem;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
           }
 
           .hero-points-grid {
             grid-template-columns: 1fr;
             width: 100%;
             max-width: 320px;
-            margin: 0 auto 20px;
+            margin: 0 auto 18px;
           }
 
           .hero-point-item {

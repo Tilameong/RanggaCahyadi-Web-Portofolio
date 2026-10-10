@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Terminal, Heart, Shield, ArrowUp } from "lucide-react";
+import { ArrowUp, Layers } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -11,9 +11,9 @@ export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: "1px solid rgba(139, 92, 246, 0.2)",
-        background: "rgba(5, 6, 12, 0.95)",
-        padding: "40px 0 30px",
+        borderTop: "1px solid var(--border-subtle)",
+        background: "rgba(9, 13, 22, 0.98)",
+        padding: "32px 0 24px",
         position: "relative",
         zIndex: 10,
       }}
@@ -25,68 +25,61 @@ export default function Footer() {
             justifyContent: "space-between",
             alignItems: "center",
             flexWrap: "wrap",
-            gap: "20px",
-            marginBottom: "24px",
+            gap: "16px",
+            marginBottom: "20px",
           }}
         >
           {/* Brand */}
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <div
               style={{
-                width: "34px",
-                height: "34px",
+                width: "32px",
+                height: "32px",
                 borderRadius: "8px",
-                background: "linear-gradient(135deg, #8b5cf6, #f97316)",
+                background: "linear-gradient(135deg, #6366f1, #f97316)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
               }}
             >
-              <Terminal size={18} color="#ffffff" />
+              <Layers size={16} color="#ffffff" />
             </div>
             <div>
-              <div style={{ fontWeight: 700, color: "#fff", fontSize: "1rem" }}>
+              <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "0.95rem" }}>
                 Rangga Cahyadi
               </div>
               <div
                 style={{
                   fontSize: "0.75rem",
-                  color: "var(--purple-400)",
+                  color: "var(--indigo-light)",
                   fontFamily: "var(--font-mono)",
                 }}
               >
-                IT Support &amp; IT Administration Portfolio
+                IT Technical Support &bull; IT Administrator
               </div>
             </div>
           </div>
 
-          {/* Quick Info & Tech Stack */}
-          <div
-            style={{
-              fontSize: "0.85rem",
-              color: "var(--text-muted)",
-              textAlign: "center",
-            }}
-          >
-            Dibangun dengan <strong style={{ color: "#fff" }}>Next.js</strong> &bull;{" "}
-            <span style={{ color: "var(--purple-400)" }}>Cyber Dark &bull; Neon Purple &bull; Orange Accent</span>
-          </div>
-
-          {/* Back to top */}
+          {/* Clean Back to top */}
           <button
             onClick={scrollToTop}
             className="btn-ghost"
-            style={{ padding: "8px 14px", borderRadius: "8px" }}
+            style={{
+              padding: "7px 14px",
+              fontSize: "0.82rem",
+              borderRadius: "6px",
+            }}
           >
             <span>Kembali ke Atas</span>
-            <ArrowUp size={16} />
+            <ArrowUp size={14} />
           </button>
         </div>
 
+        {/* Clean Copyright Line */}
         <div
           style={{
-            borderTop: "1px solid rgba(255, 255, 255, 0.06)",
-            paddingTop: "20px",
+            borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+            paddingTop: "16px",
             textAlign: "center",
             fontSize: "0.8rem",
             color: "var(--text-dim)",
