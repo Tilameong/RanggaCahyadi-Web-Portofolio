@@ -256,19 +256,32 @@ export default function ContactSection({
               }}
             >
               <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "1rem", marginBottom: "4px" }}>
-                Berkas Dokumen CV
+                Berkas Dokumen CV Resmi
               </div>
               <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "14px" }}>
-                Unduh berkas CV-Rangga Cahyadi-IT-Admin.docx asli.
+                Unduh berkas CV-Rangga_Cahyadi-IT-Admin-IN.pdf asli.
               </p>
               <button
                 onClick={onDownloadCv}
                 className="btn-primary"
-                style={{ width: "100%", justifyContent: "center" }}
+                style={{ width: "100%", justifyContent: "center", marginBottom: "8px" }}
               >
                 <Download size={16} />
-                <span>Unduh Berkas CV (.docx)</span>
+                <span>Unduh Berkas CV (.pdf)</span>
               </button>
+              <a
+                href="/assets/CV/CV-Rangga Cahyadi-IT-Admin.docx"
+                download="CV-Rangga Cahyadi-IT-Admin.docx"
+                style={{
+                  fontSize: "0.78rem",
+                  color: "var(--indigo-light)",
+                  textDecoration: "none",
+                  display: "block",
+                  textAlign: "center",
+                }}
+              >
+                Tersedia juga versi Microsoft Word (.docx)
+              </a>
             </div>
           </div>
 

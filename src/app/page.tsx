@@ -25,13 +25,13 @@ export default function Home() {
 
   const handleDownloadCv = () => {
     const link = document.createElement("a");
-    link.href = "/assets/CV/CV-Rangga Cahyadi-IT-Admin.docx";
-    link.download = "CV-Rangga Cahyadi-IT-Admin.docx";
+    link.href = "/assets/CV/CV-Rangga_Cahyadi-IT-Admin-IN.pdf";
+    link.download = "CV-Rangga_Cahyadi-IT-Admin-IN.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
-    showToast("Dokumen CV-Rangga Cahyadi-IT-Admin.docx sedang diunduh!");
+    showToast("Dokumen CV resmi (.pdf) sedang diunduh!");
   };
 
   const scrollToContact = () => {

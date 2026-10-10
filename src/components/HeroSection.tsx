@@ -105,7 +105,7 @@ export default function HeroSection({
                 id="btn-hero-download"
               >
                 <Download size={16} />
-                <span>Unduh CV Resmi (.docx)</span>
+                <span>Unduh CV Resmi (.pdf)</span>
               </button>
 
               <a

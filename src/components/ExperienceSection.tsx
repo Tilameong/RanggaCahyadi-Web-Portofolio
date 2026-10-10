@@ -11,8 +11,15 @@ import {
   X,
 } from "lucide-react";
 
+interface FieldPhotoItem {
+  src: string;
+  alt: string;
+  badge: string;
+  caption: string;
+}
+
 export default function ExperienceSection() {
-  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<FieldPhotoItem | null>(null);
 
   const experiences = [
     {
@@ -65,16 +72,20 @@ export default function ExperienceSection() {
     },
   ];
 
-  const fieldPhotos = [
+  const fieldPhotos: FieldPhotoItem[] = [
     {
       src: "/assets/Project/Memperbaiki Printer Epson di Ruang Kerja.png",
-      alt: "Dokumentasi IT Technician - Troubleshooting Printer Epson",
-      badge: "Troubleshooting Printer Epson",
+      alt: "Troubleshooting & Perbaikan Hardware",
+      badge: "Troubleshooting & Perbaikan Hardware",
+      caption:
+        "Troubleshooting perangkat komputer, perbaikan hardware printer, pemeriksaan catridge/mekanik, serta pengujian kelayakan operasional.",
     },
     {
       src: "/assets/Project/Teknisi Jaringan di Ruang Server.png",
-      alt: "Dokumentasi IT Technician - Maintenance Jaringan di Ruang Server",
-      badge: "Teknisi Jaringan & Ruang Server",
+      alt: "Maintenance Jaringan Server & CCTV PoE",
+      badge: "Maintenance Jaringan Server & CCTV PoE",
+      caption:
+        "Dokumentasi pemeriksaan konektivitas di ruang server: penataan kabel LAN (UTP), pemantauan koneksi rack switch/router, dan verifikasi kestabilan jaringan lokal. Maintenance jaringan server dan CCTV PoE.",
     },
   ];
 
@@ -260,7 +271,7 @@ export default function ExperienceSection() {
           ))}
         </div>
 
-        {/* Real Fieldwork Documentation Showcase (Clean Tanpa Caption, Tidak Terpotong) */}
+        {/* Real Fieldwork Documentation Showcase (Responsif Mobile & Web, Tidak Terpotong) */}
         <div style={{ marginTop: "44px" }}>
           <div
             style={{
@@ -298,7 +309,7 @@ export default function ExperienceSection() {
                   Dokumentasi Lapangan Teknisi IT
                 </h3>
                 <div style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-                  Bukti visual penanganan printer &amp; jaringan server (klik untuk memperbesar)
+                  Bukti visual penanganan hardware &amp; jaringan server (klik untuk melihat detail)
                 </div>
               </div>
             </div>
@@ -319,13 +330,13 @@ export default function ExperienceSection() {
             </span>
           </div>
 
-          {/* Photo Cards Grid: Tanpa Caption, Rasio Utuh Tanpa Kepotong */}
+          {/* Photo Cards Grid: Responsif Web & Mobile, Utuh Tidak Terpotong */}
           <div className="field-grid">
             {fieldPhotos.map((photo, idx) => (
               <div
                 key={idx}
                 className="field-card"
-                onClick={() => setSelectedPhoto(photo.src)}
+                onClick={() => setSelectedPhoto(photo)}
                 title="Klik untuk melihat foto penuh"
               >
                 <div className="field-img-wrap">
@@ -333,7 +344,7 @@ export default function ExperienceSection() {
                     src={photo.src}
                     alt={photo.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, 450px"
+                    sizes="(max-width: 768px) 100vw, 500px"
                     style={{
                       objectFit: "contain",
                       objectPosition: "center",
@@ -354,7 +365,7 @@ export default function ExperienceSection() {
         </div>
       </div>
 
-      {/* Modal Lightbox Preview Foto Dokumentasi Tanpa Caption (100% Utuh) */}
+      {/* Modal Lightbox Preview Foto Dokumentasi Lengkap & 100% Utuh */}
       {selectedPhoto && (
         <div
           className="modal-overlay"
@@ -365,7 +376,7 @@ export default function ExperienceSection() {
             className="modal-content"
             onClick={(e) => e.stopPropagation()}
             style={{
-              maxWidth: "600px",
+              maxWidth: "650px",
               width: "92vw",
               padding: "0",
               overflow: "hidden",
@@ -377,7 +388,7 @@ export default function ExperienceSection() {
             {/* Modal Top Bar */}
             <div
               style={{
-                padding: "12px 18px",
+                padding: "14px 20px",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -387,13 +398,12 @@ export default function ExperienceSection() {
             >
               <div
                 style={{
-                  fontSize: "0.85rem",
-                  fontWeight: 600,
+                  fontSize: "0.92rem",
+                  fontWeight: 700,
                   color: "#ffffff",
-                  fontFamily: "var(--font-mono)",
                 }}
               >
-                Dokumentasi Lapangan Teknisi IT
+                {selectedPhoto.badge}
               </div>
               <button
                 onClick={() => setSelectedPhoto(null)}
@@ -413,25 +423,38 @@ export default function ExperienceSection() {
               </button>
             </div>
 
-            {/* Modal Image Display (contain, utuh 100%) */}
+            {/* Modal Image Display (contain, 100% utuh tanpa kepotong) */}
             <div
               style={{
                 position: "relative",
                 width: "100%",
-                height: "75vh",
-                maxHeight: "720px",
+                height: "68vh",
+                maxHeight: "680px",
                 background: "#030712",
               }}
             >
               <Image
-                src={selectedPhoto}
-                alt="Dokumentasi Lapangan Penuh"
+                src={selectedPhoto.src}
+                alt={selectedPhoto.alt}
                 fill
-                sizes="(max-width: 768px) 95vw, 600px"
+                sizes="(max-width: 768px) 95vw, 650px"
                 style={{
                   objectFit: "contain",
                 }}
               />
+            </div>
+
+            {/* Modal Detail Caption */}
+            <div
+              style={{
+                padding: "14px 20px",
+                background: "#090d16",
+                borderTop: "1px solid var(--border-subtle)",
+              }}
+            >
+              <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: 1.55, margin: 0 }}>
+                {selectedPhoto.caption}
+              </p>
             </div>
           </div>
         </div>
@@ -504,15 +527,19 @@ export default function ExperienceSection() {
           position: absolute;
           bottom: 12px;
           left: 12px;
-          background: rgba(9, 13, 22, 0.88);
+          background: rgba(9, 13, 22, 0.9);
           backdrop-filter: blur(8px);
           color: #f1f5f9;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          padding: 4px 10px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 5px 12px;
           border-radius: 6px;
-          font-size: 0.74rem;
+          font-size: 0.76rem;
           font-family: var(--font-mono);
           font-weight: 600;
+          max-width: calc(100% - 24px);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         @media (max-width: 768px) {
@@ -525,6 +552,11 @@ export default function ExperienceSection() {
 
           .field-img-wrap {
             aspect-ratio: 10 / 16;
+          }
+
+          .field-pill {
+            font-size: 0.72rem;
+            padding: 4px 10px;
           }
         }
       `}</style>
