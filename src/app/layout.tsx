@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "Rangga Cahyadi Portfolio",
     images: [
       {
-        url: "/assets/Pas Photo/Potret Identitas Pria Berjas Hitam.png",
+        url: "/assets/Pas Photo/Potret Profesional dengan Logo Microsoft.png",
         width: 800,
         height: 1067,
         alt: "Rangga Cahyadi - IT Support & IT Administrator",

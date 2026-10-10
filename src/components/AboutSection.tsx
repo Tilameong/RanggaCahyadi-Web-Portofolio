@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import TerminalWidget from "./TerminalWidget";
-import { GraduationCap, Award, ShieldCheck, Wrench, CheckCircle2, User } from "lucide-react";
+import { GraduationCap, Award, ShieldCheck, Wrench, CheckCircle2 } from "lucide-react";
 
 export default function AboutSection() {
   return (
@@ -150,62 +149,6 @@ export default function AboutSection() {
               <div style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
                 Kurikulum terapan mencakup pemeliharaan hardware &amp; software, perancangan jaringan komputer
                 (LAN/VLAN), basis data terstruktur, sistem informasi manajemen, serta perancangan antarmuka digital UI/UX.
-              </div>
-            </div>
-
-            {/* Identitas Formal Card (Pas Foto Berjas Hitam) */}
-            <div
-              className="glass-card"
-              style={{
-                padding: "16px 20px",
-                borderLeft: "4px solid #38bdf8",
-                display: "flex",
-                alignItems: "center",
-                gap: "16px",
-              }}
-            >
-              <div
-                style={{
-                  position: "relative",
-                  width: "60px",
-                  height: "75px",
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  flexShrink: 0,
-                  border: "1px solid var(--border-subtle)",
-                  backgroundColor: "#0d1322",
-                }}
-              >
-                <Image
-                  src="/assets/Pas Photo/Potret Identitas Pria Berjas Hitam.png"
-                  alt="Rangga Cahyadi - Pas Foto Identitas"
-                  fill
-                  sizes="60px"
-                  style={{ objectFit: "cover", objectPosition: "center top" }}
-                />
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
-                  <span style={{ fontSize: "0.92rem", fontWeight: 700, color: "#ffffff" }}>
-                    Rangga Cahyadi
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.7rem",
-                      padding: "2px 6px",
-                      borderRadius: "4px",
-                      background: "rgba(56, 189, 248, 0.15)",
-                      color: "#38bdf8",
-                      border: "1px solid rgba(56, 189, 248, 0.3)",
-                    }}
-                  >
-                    Pas Foto Resmi
-                  </span>
-                </div>
-                <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "2px" }}>
-                  Berkas Identitas Pelamar Kerja IT Support &amp; IT Administrator
-                </div>
               </div>
             </div>
 

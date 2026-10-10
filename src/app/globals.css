@@ -300,6 +300,15 @@ body.cyber-body {
     padding: 10px 16px !important;
     font-size: 0.88rem !important;
   }
+  .nav-cv-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .nav-cv-btn {
+    display: none !important;
+  }
 }
 
 @media (max-width: 480px) {

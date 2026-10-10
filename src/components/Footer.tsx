@@ -9,52 +9,19 @@ export default function Footer() {
   };
 
   return (
-    <footer
-      style={{
-        borderTop: "1px solid var(--border-subtle)",
-        background: "rgba(9, 13, 22, 0.98)",
-        padding: "32px 0 24px",
-        position: "relative",
-        zIndex: 10,
-      }}
-    >
+    <footer className="site-footer">
       <div className="container-custom">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "16px",
-            marginBottom: "20px",
-          }}
-        >
+        <div className="footer-inner">
           {/* Brand */}
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <div
-              style={{
-                width: "32px",
-                height: "32px",
-                borderRadius: "8px",
-                background: "linear-gradient(135deg, #6366f1, #f97316)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Layers size={16} color="#ffffff" />
+          <div className="footer-brand">
+            <div className="footer-logo">
+              <Layers size={18} color="#ffffff" />
             </div>
-            <div>
-              <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "0.95rem" }}>
+            <div className="footer-brand-text">
+              <div className="footer-name">
                 Rangga Cahyadi
               </div>
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  color: "var(--indigo-light)",
-                  fontFamily: "var(--font-mono)",
-                }}
-              >
+              <div className="footer-tagline">
                 IT Technical Support &bull; IT Administrator
               </div>
             </div>
@@ -63,12 +30,7 @@ export default function Footer() {
           {/* Clean Back to top */}
           <button
             onClick={scrollToTop}
-            className="btn-ghost"
-            style={{
-              padding: "7px 14px",
-              fontSize: "0.82rem",
-              borderRadius: "6px",
-            }}
+            className="btn-ghost footer-top-btn"
           >
             <span>Kembali ke Atas</span>
             <ArrowUp size={14} />
@@ -76,18 +38,116 @@ export default function Footer() {
         </div>
 
         {/* Clean Copyright Line */}
-        <div
-          style={{
-            borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-            paddingTop: "16px",
-            textAlign: "center",
-            fontSize: "0.8rem",
-            color: "var(--text-dim)",
-          }}
-        >
+        <div className="footer-copy">
           &copy; 2026 Rangga Cahyadi. Seluruh hak cipta dilindungi undang-undang.
         </div>
       </div>
+
+      <style jsx>{`
+        .site-footer {
+          border-top: 1px solid var(--border-subtle);
+          background: rgba(9, 13, 22, 0.98);
+          padding: 32px 0 24px;
+          position: relative;
+          z-index: 10;
+        }
+
+        .footer-inner {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 16px;
+          margin-bottom: 20px;
+        }
+
+        .footer-brand {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .footer-logo {
+          width: 34px;
+          height: 34px;
+          border-radius: 8px;
+          background: linear-gradient(135deg, #6366f1, #f97316);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .footer-brand-text {
+          text-align: left;
+        }
+
+        .footer-name {
+          font-weight: 700;
+          color: #ffffff;
+          font-size: 0.95rem;
+        }
+
+        .footer-tagline {
+          font-size: 0.75rem;
+          color: var(--indigo-light);
+          font-family: var(--font-mono);
+        }
+
+        .footer-top-btn {
+          padding: 7px 14px;
+          font-size: 0.82rem;
+          border-radius: 6px;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .footer-copy {
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          padding-top: 16px;
+          text-align: center;
+          font-size: 0.8rem;
+          color: var(--text-dim);
+        }
+
+        @media (max-width: 768px) {
+          .site-footer {
+            padding: 24px 0 20px;
+          }
+
+          .footer-inner {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 14px;
+            margin-bottom: 16px;
+          }
+
+          .footer-brand {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+          }
+
+          .footer-brand-text {
+            text-align: center;
+          }
+
+          .footer-top-btn {
+            margin: 0 auto;
+          }
+
+          .footer-copy {
+            text-align: center;
+            font-size: 0.76rem;
+            padding-top: 12px;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

@@ -20,26 +20,6 @@ export default function HeroSection({
   onDownloadCv,
   onOpenContact,
 }: HeroSectionProps) {
-  // Photo toggle: "pro" (new photo with Microsoft logo) vs "formal" (black suit photo)
-  const [activePhoto, setActivePhoto] = useState<"pro" | "formal">("pro");
-
-  const photos = {
-    pro: {
-      name: "Foto Profesional",
-      src: "/assets/Pas Photo/Potret Profesional dengan Logo Microsoft.png",
-      alt: "Rangga Cahyadi - Potret Profesional IT Support",
-      badge: "Profil Profesional",
-    },
-    formal: {
-      name: "Pas Foto Formal",
-      src: "/assets/Pas Photo/Potret Identitas Pria Berjas Hitam.png",
-      alt: "Rangga Cahyadi - Pas Foto Identitas Berjas Hitam",
-      badge: "Pas Foto Resmi",
-    },
-  };
-
-  const currentPhoto = photos[activePhoto];
-
   return (
     <section id="tentang" className="hero-section">
       <div className="container-custom">
@@ -151,29 +131,11 @@ export default function HeroSection({
           {/* Right Column on Desktop: Photo Card (Posisi Kanan) */}
           <div className="hero-photo-col">
             <div className="hero-photo-card">
-              {/* Dual Photo Switcher Tabs */}
-              <div className="photo-tabs">
-                <button
-                  type="button"
-                  onClick={() => setActivePhoto("pro")}
-                  className={`photo-tab-btn ${activePhoto === "pro" ? "active-pro" : ""}`}
-                >
-                  Foto Profesional
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActivePhoto("formal")}
-                  className={`photo-tab-btn ${activePhoto === "formal" ? "active-formal" : ""}`}
-                >
-                  Pas Foto Formal
-                </button>
-              </div>
-
               {/* Photo Frame Container */}
               <div className="hero-image-container">
                 <Image
-                  src={currentPhoto.src}
-                  alt={currentPhoto.alt}
+                  src="/assets/Pas Photo/Potret Profesional dengan Logo Microsoft.png"
+                  alt="Rangga Cahyadi - Potret Profesional IT Support & Administration"
                   fill
                   sizes="(max-width: 640px) 270px, 330px"
                   style={{
@@ -195,13 +157,13 @@ export default function HeroSection({
                 />
               </div>
 
-              {/* Caption Under Photo */}
+              {/* Clean Caption Under Photo */}
               <div className="photo-caption">
                 <div style={{ textAlign: "left" }}>
-                  <div style={{ fontSize: "0.88rem", fontWeight: 700, color: "#ffffff" }}>
+                  <div style={{ fontSize: "0.92rem", fontWeight: 700, color: "#ffffff" }}>
                     Rangga Cahyadi
                   </div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--indigo-light)", fontFamily: "var(--font-mono)" }}>
+                  <div style={{ fontSize: "0.76rem", color: "var(--indigo-light)", fontFamily: "var(--font-mono)" }}>
                     Politeknik Negeri Lampung
                   </div>
                 </div>
@@ -210,23 +172,16 @@ export default function HeroSection({
                   style={{
                     fontSize: "0.72rem",
                     fontFamily: "var(--font-mono)",
-                    padding: "3px 8px",
-                    borderRadius: "4px",
-                    background:
-                      activePhoto === "pro"
-                        ? "rgba(99, 102, 241, 0.15)"
-                        : "rgba(249, 115, 22, 0.15)",
-                    color:
-                      activePhoto === "pro" ? "var(--indigo-light)" : "var(--orange-light)",
-                    border:
-                      activePhoto === "pro"
-                        ? "1px solid rgba(99, 102, 241, 0.3)"
-                        : "1px solid rgba(249, 115, 22, 0.3)",
+                    padding: "4px 9px",
+                    borderRadius: "6px",
+                    background: "rgba(99, 102, 241, 0.15)",
+                    color: "var(--indigo-light)",
+                    border: "1px solid rgba(99, 102, 241, 0.3)",
                     fontWeight: 600,
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {currentPhoto.badge}
+                  Profil Profesional
                 </span>
               </div>
             </div>
@@ -281,38 +236,6 @@ export default function HeroSection({
           box-sizing: border-box;
         }
 
-        .photo-tabs {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 6px;
-          margin-bottom: 10px;
-          padding: 3px;
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid var(--border-subtle);
-        }
-
-        .photo-tab-btn {
-          padding: 6px 8px;
-          border-radius: 6px;
-          font-size: 0.76rem;
-          font-weight: 600;
-          cursor: pointer;
-          border: none;
-          transition: all 0.2s ease;
-          background: transparent;
-          color: var(--text-muted);
-        }
-
-        .photo-tab-btn.active-pro {
-          background: linear-gradient(135deg, #6366f1, #818cf8);
-          color: #ffffff;
-        }
-
-        .photo-tab-btn.active-formal {
-          background: linear-gradient(135deg, #f97316, #fb923c);
-          color: #ffffff;
-        }
 
         .hero-image-container {
           position: relative;

@@ -130,7 +130,7 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <button
             onClick={onDownloadCv}
-            className="btn-primary"
+            className="btn-primary nav-cv-btn"
             style={{
               padding: "9px 16px",
               fontSize: "0.86rem",
@@ -198,6 +198,12 @@ export default function Navbar({ onDownloadCv }: { onDownloadCv: () => void }) {
             display: flex !important;
           }
           .mobile-menu-btn {
+            display: none !important;
+          }
+        }
+        @media (max-width: 859px) {
+          .nav-cv-btn,
+          :global(.nav-cv-btn) {
             display: none !important;
           }
         }
