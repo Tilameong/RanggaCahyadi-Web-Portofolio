@@ -1,0 +1,23 @@
+{
+  "name": "Rangga Cahyadi - IT Support & Admin Portfolio",
+  "short_name": "Rangga.IT",
+  "description": "Portofolio Profesional Rangga Cahyadi - IT Support Specialist, Network Administrator & UI/UX Designer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#090d16",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
