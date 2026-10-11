@@ -11,7 +11,6 @@ import {
 
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/data/translations";
-import { GithubIcon, HackerRankIcon, InstagramIcon } from "./SocialIcons";
 
 interface HeroSectionProps {
   onDownloadCv: () => void;
@@ -102,94 +101,6 @@ export default function HeroSection({
                 <ArrowRight size={15} />
               </a>
             </div>
-
-            {/* Direct External Profiles */}
-            <div
-              className="hero-profiles-group"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
-                gap: "10px",
-                marginTop: "16px",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "0.78rem",
-                  color: "var(--text-muted)",
-                  fontFamily: "var(--font-mono)",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                {lang === "in" ? "Profil Online:" : "Online Profiles:"}
-              </span>
-
-              <a
-                href="https://github.com/Tilameong"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost"
-                style={{
-                  padding: "6px 12px",
-                  fontSize: "0.8rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "7px",
-                  textDecoration: "none",
-                  borderRadius: "6px",
-                }}
-                title="Lihat GitHub Profil"
-              >
-                <GithubIcon size={15} color="#ffffff" />
-                <span>GitHub</span>
-              </a>
-
-              <a
-                href="https://www.hackerrank.com/profile/tilameorangga"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost"
-                style={{
-                  padding: "6px 12px",
-                  fontSize: "0.8rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "7px",
-                  textDecoration: "none",
-                  borderRadius: "6px",
-                  borderColor: "rgba(0, 234, 100, 0.3)",
-                  color: "#00ea64",
-                }}
-                title="Lihat Profil HackerRank"
-              >
-                <HackerRankIcon size={15} />
-                <span style={{ color: "#ffffff" }}>HackerRank</span>
-              </a>
-
-              <a
-                href="https://www.instagram.com/tilameocahyadi/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost"
-                style={{
-                  padding: "6px 12px",
-                  fontSize: "0.8rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "7px",
-                  textDecoration: "none",
-                  borderRadius: "6px",
-                  borderColor: "rgba(236, 72, 153, 0.35)",
-                  color: "#f472b6",
-                }}
-                title="Instagram Rangga Cahyadi (@tilameocahyadi)"
-              >
-                <InstagramIcon size={15} color="#f472b6" />
-                <span style={{ color: "#ffffff" }}>Instagram</span>
-              </a>
-            </div>
           </div>
 
           {/* Right Column on Desktop: Photo Card (Posisi Kanan) */}
@@ -244,8 +155,8 @@ export default function HeroSection({
         /* Desktop Mode: Text on LEFT (wider), Photo on RIGHT */
         .hero-grid {
           display: grid;
-          grid-template-columns: 1.35fr 0.65fr;
-          gap: 48px;
+          grid-template-columns: 1.45fr 0.55fr;
+          gap: 40px;
           align-items: center;
           width: 100%;
           max-width: 100%;
@@ -270,11 +181,11 @@ export default function HeroSection({
 
         .hero-photo-card {
           width: 100%;
-          max-width: 320px;
-          border-radius: 16px;
+          max-width: 230px;
+          border-radius: 14px;
           border: 1px solid var(--border-card);
           background: rgba(15, 23, 42, 0.85);
-          padding: 12px;
+          padding: 8px;
           box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
           box-sizing: border-box;
         }
@@ -394,8 +305,10 @@ export default function HeroSection({
           }
 
           .hero-photo-card {
-            max-width: min(280px, 85vw);
+            max-width: min(170px, 48vw);
             margin: 0 auto;
+            padding: 6px;
+            border-radius: 12px;
           }
 
           .hero-content-col {
@@ -454,13 +367,6 @@ export default function HeroSection({
           .hero-btn-group a {
             width: 100%;
             justify-content: center;
-          }
-
-          .hero-profiles-group {
-            justify-content: center;
-            width: 100%;
-            max-width: 320px;
-            margin: 14px auto 0;
           }
         }
       `}</style>
